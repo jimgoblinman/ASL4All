@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/asl4all/static/css/main.a002eddb.css",
+    "main.js": "/asl4all/static/js/main.105df2ed.js",
+    "static/js/592.8c2e44b1.chunk.js": "/asl4all/static/js/592.8c2e44b1.chunk.js",
+    "index.html": "/asl4all/index.html",
+    "main.a002eddb.css.map": "/asl4all/static/css/main.a002eddb.css.map",
+    "main.105df2ed.js.map": "/asl4all/static/js/main.105df2ed.js.map",
+    "592.8c2e44b1.chunk.js.map": "/asl4all/static/js/592.8c2e44b1.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a002eddb.css",
+    "static/js/main.105df2ed.js"
+  ]
+}
