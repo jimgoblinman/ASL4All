@@ -22,7 +22,7 @@ jobs:
           node-version: '14'
 
       - name: Change directory to frontend/asl4all
-        run: cd frontend/asl4all
+        run: cd ../frontend/asl4all
 
       - name: Install dependencies
         run: npm install
