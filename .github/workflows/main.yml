@@ -27,13 +27,15 @@ jobs:
       - name: Change directory to frontend/asl4all
         run: |
           echo "Changing directory to frontend/asl4all..."
-          cd frontend
+          cd frontend/asl4all
           echo "Current directory after change:"
           pwd
         
       - name: Install dependencies
-        run: npm install
-
+        run: |
+          npm install
+          npm install tailwindcss
+        
       - name: Build project
         run: npm run build
 
