@@ -39,7 +39,7 @@ jobs:
           folder: frontend/asl4all/build
           clean: true
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_PAGES_TOKEN }}
 
 
       #- name: Run tests
