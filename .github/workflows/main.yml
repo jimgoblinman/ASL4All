@@ -26,6 +26,7 @@ jobs:
 
       - name: Change directory to frontend/asl4all
         run: |
+          pwd
           echo "Changing directory to frontend/asl4all..."
           cd frontend/asl4all
           echo "Current directory after change:"
