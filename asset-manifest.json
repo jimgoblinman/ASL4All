@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/asl4all/static/css/main.a002eddb.css",
-    "main.js": "/asl4all/static/js/main.105df2ed.js",
-    "static/js/592.8c2e44b1.chunk.js": "/asl4all/static/js/592.8c2e44b1.chunk.js",
-    "index.html": "/asl4all/index.html",
-    "main.a002eddb.css.map": "/asl4all/static/css/main.a002eddb.css.map",
-    "main.105df2ed.js.map": "/asl4all/static/js/main.105df2ed.js.map",
-    "592.8c2e44b1.chunk.js.map": "/asl4all/static/js/592.8c2e44b1.chunk.js.map"
+    "main.css": "/ASL4All/static/css/main.a002eddb.css",
+    "main.js": "/ASL4All/static/js/main.310867f4.js",
+    "static/js/592.8c2e44b1.chunk.js": "/ASL4All/static/js/592.8c2e44b1.chunk.js",
+    "index.html": "/ASL4All/index.html",
+    "main.a002eddb.css.map": "/ASL4All/static/css/main.a002eddb.css.map",
+    "main.310867f4.js.map": "/ASL4All/static/js/main.310867f4.js.map",
+    "592.8c2e44b1.chunk.js.map": "/ASL4All/static/js/592.8c2e44b1.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a002eddb.css",
-    "static/js/main.105df2ed.js"
+    "static/js/main.310867f4.js"
   ]
 }
