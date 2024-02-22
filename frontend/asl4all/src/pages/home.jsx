@@ -1,7 +1,16 @@
-export default function home() {
+import { Menu } from '../components/components'
+
+import styles from './home.module.css'
+
+export default function Home() {
     return (
-        <div>
-            <h1 className="text-3xl font-bold underline">ASL 4 ALL YAY</h1>
+        <div className={styles.wrapper}>
+            <Menu />
+            <div className={styles.media}></div>
+            <div className={styles.text_box}>
+                <div>C</div>
+                <p>AC</p>
+            </div>
         </div>
-    );
+    )
 }
