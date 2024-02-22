@@ -1,8 +1,7 @@
-
-import React, { useState, useEffect } from 'react';
-import { Menu } from '../components/components';
-import styles from './home.module.css';
-import Loading from '../components/loading.js';
+import React, { useState, useEffect } from "react";
+import { Menu } from "../components/components";
+import styles from "./home.module.css";
+import Loading from "../components/loading.js";
 
 const MainComponent = () => {
   const [loading, setLoading] = useState(true);
@@ -14,7 +13,7 @@ const MainComponent = () => {
 
   const fetchData = async () => {
     // Simulating data fetching with setTimeout
-    await new Promise(resolve => setTimeout(resolve, 2000)); // Simulating a 2-second loading time
+    await new Promise((resolve) => setTimeout(resolve, 2000)); // Simulating a 2-second loading time
     // Once data is fetched, setLoading to false
   };
 
@@ -26,10 +25,10 @@ const MainComponent = () => {
         <div className={styles.text_box}>
           <div>C</div>
           <p>AC</p>
-          <p>Lets Go</p>
+          <p>Lets Go AI</p>
         </div>
       </div>
-      <div className='z-10'>
+      <div className="z-10">
         {loading ? (
           <Loading />
         ) : (
@@ -44,4 +43,3 @@ const MainComponent = () => {
 };
 
 export default MainComponent;
-
