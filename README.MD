@@ -9,7 +9,7 @@ Inclusivity is only a problem if we make it one!
  
 We offer everyone the possibility to understand sign language and be able to speak with a vast community :3
  
-How can we pull this off?
+## How can we pull this off?
  
 With our state of the art AI model we are able to identify sign language and translate it 4 all.
  
