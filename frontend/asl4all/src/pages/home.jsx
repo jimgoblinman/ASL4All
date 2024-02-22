@@ -24,7 +24,7 @@ const MainComponent = () => {
       ) : (
         <div>
           {/* Render your main content once loading is complete */}
-          <h1>Main Content :)</h1>
+          <h1>Main Content</h1>
         </div>
       )}
     </div>
