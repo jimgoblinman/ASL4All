@@ -31,16 +31,10 @@ jobs:
         run: |
           cd frontend/asl4all
           npm run build
-
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@4.1.4
-        with:
-          branch: gh-pages
-          folder: frontend/asl4all/build
-          clean: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-
+          
+      #- name: Deploy project
+      #  run: |
+      #    cd frontend/asl4all
+      #    npm run deploy
       #- name: Run tests
-        #run: npm test
+        #run: npm
