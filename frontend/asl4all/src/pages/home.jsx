@@ -10,7 +10,7 @@ export default function Home() {
       <div className={styles.text_box}>
         <div>C</div>
         <p>AC</p>
-        <p>Lets Go AI</p>
+        <p>Lets Go AI 2</p>
       </div>
     </div>
   );
