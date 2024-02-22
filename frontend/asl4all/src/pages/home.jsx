@@ -35,6 +35,7 @@ const MainComponent = () => {
           <div>
             {/* Render your main content once loading is complete */}
             <video src="../assets/loading-video.mp4" controls></video>
+            <p>Test</p>
           </div>
         )}
       </div>
