@@ -3,16 +3,15 @@ from mediapipe.tasks import python
 from mediapipe.tasks.python import vision
 import cv2
 import time
+import pathlib
 
-
-model_path = 'C:/Users/greg1/OneDrive/Dokumente/GitHub/ASL4All/AI/rps test python output/gesture_recognizer_asl.task'
+model_path = f'{pathlib.Path(__file__).parent.resolve()}/gesture_recognizer_asl_30_epoch.task'
 
 cap = cv2.VideoCapture(0)
 
 if not cap.isOpened():
     print("Error: Failed to open webcam.")
     exit()
-
 
 BaseOptions = mp.tasks.BaseOptions
 GestureRecognizer = mp.tasks.vision.GestureRecognizer
@@ -23,14 +22,21 @@ VisionRunningMode = mp.tasks.vision.RunningMode
 
 # Create a gesture recognizer instance with the live stream mode:
 def print_result(result: GestureRecognizerResult, output_image: mp.Image, timestamp_ms: int):
-    print('gesture recognition result: {}'.format(result))
+    # print('gesture recognition result: {}'.format(result))
+
+    gestures = result.gestures
+
+    if gestures:
+        category_type = gestures[0][0].category_name
+        print("Category type:", category_type)
+    else:
+        print("No gestures detected.")
 
 
 options = GestureRecognizerOptions(
     base_options=BaseOptions(model_asset_path=model_path),
     running_mode=VisionRunningMode.LIVE_STREAM,
     result_callback=print_result)
-
 
 with GestureRecognizer.create_from_options(options) as recognizer:
     while True:
