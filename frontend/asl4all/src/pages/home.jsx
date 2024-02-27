@@ -9,8 +9,11 @@ const MainComponent = () => {
   const [loading, setLoading] = useState(true);
   const [gestureRecognizer, setGestureRecognizer] = useState(null);
   const [currentLetter, setCurrentLetter] = useState("");
+  const [currentSentence, setCurrentSentence] = useState("");
   const videoRef = useRef(null);
   const runningModeRef = useRef("VIDEO");
+  let count = 0
+  let prev = ""
 
   useEffect(() => {
     const createGestureRecognizer = async () => {
@@ -30,7 +33,11 @@ const MainComponent = () => {
   }, []);
 
   useEffect(() => {
+    setLoading(false)
     const video = videoRef.current;
+
+    let lastVideoTime = -1;
+    let results = undefined;
 
     const constraints = { video: true };
     navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
@@ -38,14 +45,14 @@ const MainComponent = () => {
       video.addEventListener("loadeddata", () => {
         if (gestureRecognizer) {
           predictWebcam();
-          let intervalId = setInterval(predictWebcam, 1000);
+          let intervalId = setInterval(predictWebcam, 500);
           return () => clearInterval(intervalId);
         }
       });
     });
 
-    let lastVideoTime = -1;
-    let results = undefined;
+
+
     async function predictWebcam() {
       let nowInMs = Date.now();
       if (video.currentTime !== lastVideoTime) {
@@ -55,45 +62,49 @@ const MainComponent = () => {
 
       try {
         setCurrentLetter(results.gestures[0][0].categoryName);
+
+        if (results.gestures[0][0].categoryName === prev){
+          count += 1
+        } else {
+          prev = results.gestures[0][0].categoryName
+          count = 0
+        }
+        if (count === 3) {
+          count = 0
+          setCurrentSentence(prevSentence => prevSentence + results.gestures[0][0].categoryName);
+        }
+
       } catch (error) {
-        setCurrentLetter("No letter");
+        setCurrentLetter("");
       }
     }
   }, [gestureRecognizer]);
 
-  useEffect(() => {
-    fetchData().then(() => setLoading(false));
-  }, []);
-
-  const fetchData = async () => {
-    await new Promise((resolve) => setTimeout(resolve, 2000)); // Simulating a 2-second loading time
-  };
-
   return (
-    <>
-      <div className={styles.wrapper}>
-        <Menu />
-        <video
-          id="webcam"
-          ref={videoRef}
-          autoPlay
-          className="h-full w-full bg-cover bg-center"
-        />
-        <div className={styles.text_box}>
-          <h1 className="text-3xl">{currentLetter}</h1>
-        </div>
-      </div>
-      {/* <div className="z-10">
-        {loading ? (
-          <Loading />
-        ) : (
-          <div>
-            <video src="../assets/loading-video.mp4" controls></video>
-            <p>Test</p>
+      <>
+        <div className={styles.wrapper}>
+          <Menu/>
+          <video
+              id="webcam"
+              ref={videoRef}
+              autoPlay
+              className="h-full w-full object-cover object-center"
+          />
+
+          <div className={styles.text_box}>
+            <div
+                className="box-content h-32 w-32 absolute top-0 right-0 flex justify-center items-center bg-gray-600 rounded-2xl"> {currentLetter} </div>
+            <h1 className="text-3xl">{currentSentence} </h1>
           </div>
-        )}
-      </div> */}
-    </>
+        </div>
+        {/*<div className="z-10">*/}
+        {/*  {loading ? (*/}
+        {/*      <Loading/>*/}
+        {/*  ) : (*/}
+
+        {/*  )}*/}
+        {/*</div>*/}
+      </>
   );
 };
 
