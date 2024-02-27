@@ -5,7 +5,8 @@ import cv2
 import time
 import pathlib
 
-model_path = f'{pathlib.Path(__file__).parent.resolve()}/gesture_recognizer_asl_30_epoch.task'
+
+model_path = f'{pathlib.Path(__file__).parent.resolve()}/gesture_recognizer_asl_with_space_del_nothing.task'
 
 cap = cv2.VideoCapture(0)
 
