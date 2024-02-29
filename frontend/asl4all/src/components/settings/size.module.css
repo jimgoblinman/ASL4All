@@ -1,0 +1,15 @@
+.slider {
+    @apply ;
+    -webkit-appearance: none;
+    -appearance: none;
+
+}
+
+.slider::-webkit-slider-thumb {
+    @apply ;
+}
+
+.slider::-moz-range-thumb {
+    @apply ;
+}
+
