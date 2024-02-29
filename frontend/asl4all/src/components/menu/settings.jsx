@@ -1,12 +1,20 @@
 import { Block, Dropdown } from '../components'
+import { Font, Size, Color, Opacity } from '../settings/main'
 
 import styles from './settings.module.css'
 
 export default function Settings({ open }) {
+    const display = <>
+        <Dropdown title={'Font'} content={<Font />} />
+        <Dropdown title={'Minimum Text size'} content={<Size />} />
+        <Dropdown title={'Text Color'} content={<Color />} />
+        <Dropdown title={'Opacity'} content={<Opacity />} />
+    </>
+
     const settings = [
-        <Dropdown title={'Display Settings'} />,
-        <Dropdown title={'Language Settings'} />,
-        <Dropdown title={'QR Code'} />
+        <Dropdown title={'Display Settings'} content={display} />,
+        <Dropdown title={'Language Settings'} content={<></>} />,
+        <Dropdown title={'QR Code'} content={<></>} />
     ]
 
     return (

@@ -1,0 +1,48 @@
+.wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+.top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0.5rem;
+    
+    font-size: 1.5rem;
+}
+
+.top > span {
+    height: 1.5rem;
+    width: 1.5rem;
+    
+    border-bottom: 1px solid white;
+    border-right: 1px solid transparent;
+    
+    transform: translateY(-50%);
+    transition: 0.5s ease;
+}
+
+.open > div > span {
+    height: 0.8rem;
+    width: 0.8rem;
+    
+    border-bottom: 1px solid white;
+    border-right: 1px solid white;
+    
+    transform: translate(-50%, 0) rotate(-135deg);
+}
+
+.content {
+    margin: 0 0.5rem 0 0.5rem;
+    max-height: 0;
+    overflow-y: hidden;
+    transition: 0.5s ease;
+}
+
+.open > .content {
+    margin: 0.5rem;
+    max-height: 50svh;
+    overflow-y: scroll;
+}
