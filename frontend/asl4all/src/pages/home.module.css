@@ -48,7 +48,12 @@
 
     font-size: 2rem;
     
-    background-color: #858585;
+    background-color: transparent;
+    transition: 0.5s ease;
 }
 
 .text_box > p { font-size: 4rem; }
+
+.active {
+    background-color: #858585 !important;
+}
