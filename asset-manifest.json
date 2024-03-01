@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/ASL4All/static/css/main.b430e01a.css",
-    "main.js": "/ASL4All/static/js/main.9ba1432c.js",
+    "main.js": "/ASL4All/static/js/main.355c4c94.js",
     "static/js/592.093f8e88.chunk.js": "/ASL4All/static/js/592.093f8e88.chunk.js",
     "static/media/gesture_recognizer_asl_30_epoch.task": "/ASL4All/static/media/gesture_recognizer_asl_30_epoch.3e3d1bb1ee1c56aeb1a8.task",
     "static/media/dcpbm9q-c397b862-73c0-459b-9bdb-63c8c8228ca3.gif": "/ASL4All/static/media/dcpbm9q-c397b862-73c0-459b-9bdb-63c8c8228ca3.1ad1be8fda573b9b0048.gif",
     "index.html": "/ASL4All/index.html",
     "main.b430e01a.css.map": "/ASL4All/static/css/main.b430e01a.css.map",
-    "main.9ba1432c.js.map": "/ASL4All/static/js/main.9ba1432c.js.map",
+    "main.355c4c94.js.map": "/ASL4All/static/js/main.355c4c94.js.map",
     "592.093f8e88.chunk.js.map": "/ASL4All/static/js/592.093f8e88.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b430e01a.css",
-    "static/js/main.9ba1432c.js"
+    "static/js/main.355c4c94.js"
   ]
 }
