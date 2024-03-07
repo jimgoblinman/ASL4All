@@ -34,5 +34,5 @@ jobs:
 
       - name: Run Super Linter
         run: |
-        cd frontend/asl4all
-        ./bin/run
+          cd frontend/asl4all
+          ./bin/run
