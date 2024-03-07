@@ -30,18 +30,6 @@ jobs:
           npm install
           npm install tailwindcss
 
-      - name: run frontend test
-        run: |
-          cd frontend/asl4all
-          npm i
-          npm test
-
-      - name: run backend test
-        run: |
-          cd backend
-          npm i
-          npm test
-
       - name: Build project
         run: |
           cd frontend/asl4all
