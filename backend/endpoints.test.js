@@ -47,7 +47,7 @@ describe('Donor Endpoints', () => {
     expect(res.body.feedback).toEqual(newDonor.feedback);
   });
 
-  afterAll(done => {
-    server.close(done);
+  afterAll(async () => {
+    await new Promise(resolve => server.close(resolve));
   });
 });
