@@ -6,33 +6,46 @@
 
 body
 {
-    background-color: rgb(49, 49, 49);
+    background-color: rgb(45, 45, 45);
 }
 
 form
 {
     background: rgba(0, 0, 0, 0.50);
-    margin: 1.5rem;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
     padding: 1rem;
     border-radius: 1rem;
+    width: 100%;
 }
 
 select, input
 {
-    background: rgba(255, 255, 255, 0.85);
+    border-bottom: 2px solid white;
+    background: rgba(0, 0, 0, 0.0);
     height: 3vw;
     padding-left: 1vw;
-    border-radius: 0.5vw;
+    color: white;
+}
+
+option
+{
+    color: black;
 }
 
 textarea
 {
-    background: rgba(255, 255, 255, 0.85);
+    border-bottom: 2px solid white;
+    background: rgba(0, 0, 0, 0.0);
     height: 10vw;
     padding-left: 1vw;
     padding-top: 1vw;
-    border-radius: 0.5vw;
     resize: none;
+    color: white;
+}
+
+textarea:focus, input:focus{
+    outline: none;
 }
 
 button
@@ -44,6 +57,14 @@ button
     gap: 1vw;
     font-size: 2rem;
     color: white;
+}
+
+.feedbackContainer
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
 .feedbackForm

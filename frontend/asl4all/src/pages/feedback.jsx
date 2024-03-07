@@ -6,7 +6,7 @@ import styles from './feedback.module.css'
 const Feedback = () => {
 
     return (
-        <>
+        <div className={styles.feedbackContainer}>
             <form>
                 <div className={styles.feedbackForm}>
                     <input placeholder="Name (Optional)" />
@@ -24,7 +24,7 @@ const Feedback = () => {
                     <button type="submit">Send <IoMdSend/></button>
                 </div>
             </form>
-        </>
+        </div>
     );
 };
 
