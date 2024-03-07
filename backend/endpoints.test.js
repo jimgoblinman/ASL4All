@@ -46,4 +46,8 @@ describe('Donor Endpoints', () => {
     expect(res.body.email).toEqual(newDonor.email);
     expect(res.body.feedback).toEqual(newDonor.feedback);
   });
+
+  afterAll(done => {
+    server.close(done);
+  });
 });
