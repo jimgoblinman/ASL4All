@@ -1,15 +1,13 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-require('dotenv').config()
+require('dotenv').config();
 
-console.log(process.env.MONGODB_URI)
+console.log(process.env.MONGODB_URI);
 mongoose.connect(process.env.MONGODB_URI);
-const db = mongoose.connection
+const db = mongoose.connection;
 db.on('error', (error) => console.error(error));
-db.once('open', () => {
-  console.log('Connected to the database');
-});
+db.once('open', () => {});
 
 app.use(express.json());
 const donorRoutes = require('./routes/donors');
@@ -19,5 +17,8 @@ const feedbackRoutes = require('./routes/feedbacks');
 app.use('/donors', donorRoutes);
 app.use('/feedbacks', feedbackRoutes);
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+const server = app.listen(process.env.PORT || 8000, () => {
+  console.log(`Server running on port ${server.address().port}`);
+});
+
+module.exports = server;
