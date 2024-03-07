@@ -3,8 +3,7 @@ const app = express();
 const mongoose = require('mongoose');
 require('dotenv').config();
 
-console.log(process.env.MONGODB_URI);
-mongoose.connect(process.env.MONGODB_URI);
+mongoose.connect("mongodb+srv://admin:sml12345@cluster0.s12qsmp.mongodb.net/ASL4ALL");
 const db = mongoose.connection;
 db.on('error', (error) => console.error(error));
 db.once('open', () => {});

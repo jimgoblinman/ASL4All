@@ -24,11 +24,11 @@ jobs:
         with:
           node-version: "16.20.1"
 
-      # - name: run frontend test
-      #   run: |
-      #     cd frontend/asl4all
-      #     npm i
-      #     npm test
+      - name: run frontend test
+        run: |
+          cd frontend/asl4all
+          npm i
+          npm test
 
       - name: run backend test
         run: |
