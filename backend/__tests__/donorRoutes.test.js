@@ -10,7 +10,7 @@ describe('Donor routes', () => {
         const response = await request(app)
             .post('/donors')
             .send({ name: 'John', lastName: 'Doe', amount_chf: 100 });
-
+        
         expect(response.statusCode).toBe(201);
         expect(response.body.name).toBe('John');
         expect(response.body.lastName).toBe('Doe');
