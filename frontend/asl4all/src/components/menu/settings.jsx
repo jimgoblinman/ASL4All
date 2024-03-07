@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { Block, Dropdown } from '../components'
 import { Font, Size, Color, Opacity, QR } from '../settings/main'
 
@@ -23,7 +24,7 @@ export default function Settings({ open }) {
             <div className={styles.settings}>
                 <Block content={settings} />
                 <Block content={[
-                    <div className={styles.feedback}>Feedback</div>
+                    <Link to="/feedback" className={styles.feedback}>Feedback</Link>
                 ]} />
             </div>
             <div className={styles.dontate}>Donate</div>
