@@ -9,6 +9,7 @@ module.exports = {
       'calibri': ['Calibri', 'sans-serif'],
       'gill-sans-mt': ['Gill Sans MT', 'sans-serif'],
       'comic-sans': ['Comic Sans MS', 'sans-serif'],
+      'inter': ['Inter', 'sans-serif'],
     },
     extend: {},
   },
