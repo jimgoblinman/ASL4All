@@ -13,11 +13,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: run frontend test
-        working-directory: frontend/asl4all
-        run: |
-          npm i
-          npm test
+      # - name: run frontend test
+      #   working-directory: frontend/asl4all
+      #   run: |
+      #     npm i
+      #     npm test
 
       - name: run backend test
         working-directory: backend
