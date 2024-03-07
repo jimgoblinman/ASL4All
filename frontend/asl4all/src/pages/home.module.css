@@ -50,3 +50,7 @@
 }
 
 .text_box > p { font-size: 4rem; }
+
+.active {
+    background-color: #858585 !important;
+}
