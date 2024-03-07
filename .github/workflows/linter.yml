@@ -17,6 +17,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Change directory to frontend/asl4all
+        run: cd frontend/asl4all
+
       - name: Set up Super Linter
         uses: github/super-linter@v4
         env:
@@ -25,4 +33,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run Super Linter
-        run: ./bin/run
+        run: 
+        cd frontend/asl4all
+        ./bin/run
