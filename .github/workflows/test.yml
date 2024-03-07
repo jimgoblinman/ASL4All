@@ -15,6 +15,7 @@ jobs:
     steps:
       - name: run frontend test
         run: |
+          ls 
           cd frontend/asl4all
           npm i
           npm test
