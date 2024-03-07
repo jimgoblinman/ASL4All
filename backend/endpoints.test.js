@@ -3,6 +3,10 @@ const supertest = require('supertest');
 const requestWithSupertest = supertest(server);
 
 describe('Donor Endpoints', () => {
+  afterAll(() => {
+    server.close(); // Close the server after all tests are done
+  });
+
   it('GET /donors should show all donors', async () => {
     const res = await requestWithSupertest.get('/donors');
     expect(res.status).toEqual(200);
@@ -47,7 +51,4 @@ describe('Donor Endpoints', () => {
     expect(res.body.feedback).toEqual(newDonor.feedback);
   });
 
-  afterAll(async () => {
-    await new Promise(resolve => server.close(resolve));
-  });
 });
