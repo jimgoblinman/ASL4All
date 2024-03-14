@@ -16,7 +16,8 @@ const donorSchema = new mongoose.Schema({
     donationDate: {
         type: Date,
         default: Date.now
-    }
+    },
+
 });
 
 module.exports = mongoose.model('Donor', donorSchema);

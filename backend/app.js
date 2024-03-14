@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
 const mongoose = require('mongoose');
 require('dotenv').config();
 
@@ -7,6 +8,8 @@ mongoose.connect("mongodb+srv://admin:sml12345@cluster0.s12qsmp.mongodb.net/ASL4
 const db = mongoose.connection;
 db.on('error', (error) => console.error(error));
 db.once('open', () => {});
+
+app.use(cors());
 
 app.use(express.json());
 const donorRoutes = require('./routes/donors');

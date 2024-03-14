@@ -14,8 +14,8 @@ function validateFeedbackData(req, res, next) {
 // Route for adding new feedback with middleware
 router.post('/', validateFeedbackData, async (req, res) => {
     try {
-        const { name, email, feedback } = req.body;
-        const newFeedback = await feedbackService.addFeedback(name, email, feedback);
+        const { name, email, feedback, feedbackType } = req.body;
+        const newFeedback = await feedbackService.addFeedback(name, email, feedback, feedbackType);
         res.status(201).json(newFeedback);
     } catch (error) {
         res.status(400).json({ message: error.message });

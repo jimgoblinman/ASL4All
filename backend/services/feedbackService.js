@@ -1,8 +1,8 @@
 const Feedback = require('../model/feedback');
 
-async function addFeedback(name, email, feedback) {
+async function addFeedback(name, email, feedback, feedbackType) {
     try {
-        const newFeedback = new Feedback({ name, email, feedback });
+        const newFeedback = new Feedback({ name, email, feedback, feedbackType });
         await newFeedback.save();
         return newFeedback;
     } catch (error) {
