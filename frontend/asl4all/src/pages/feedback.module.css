@@ -1,0 +1,75 @@
+*
+{
+    margin: 0;
+    padding: 0;
+}
+
+body
+{
+    background-color: rgb(45, 45, 45);
+}
+
+form
+{
+    background: rgba(0, 0, 0, 0.50);
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    width: 100%;
+}
+
+select, input
+{
+    border-bottom: 2px solid white;
+    background: rgba(0, 0, 0, 0.0);
+    height: 3vw;
+    padding-left: 1vw;
+    color: white;
+}
+
+option
+{
+    color: black;
+}
+
+textarea
+{
+    border-bottom: 2px solid white;
+    background: rgba(0, 0, 0, 0.0);
+    height: 10vw;
+    padding-left: 1vw;
+    padding-top: 1vw;
+    resize: none;
+    color: white;
+}
+
+textarea:focus, input:focus{
+    outline: none;
+}
+
+button
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1vw;
+    font-size: 2rem;
+    color: white;
+}
+
+.feedbackContainer
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.feedbackForm
+{
+    display: flex;
+    flex-direction: column;
+    gap: 2.5vw;
+}
