@@ -1,22 +1,20 @@
-import styles from './language.module.css';
+
 import { useEffect, useState } from 'react';
 import Translation from "../../languages.json";
 
 export default function Language() {
-    const [language, setLanguage] = useState("english")
-    const [content, setContent] = useState({})
+    const [language, setLanguage] = useState("english");
 
     useEffect(() => {
-        if (language == "english") {
-            setContent(Translation[Translation.current].english)
+        if (language === "english") {
+            Translation.current = "english";
         }
-        else if (language == "german") {
-            setContent(Translation[Translation.current].german)
+        else if (language === "german") {
+            Translation.current = "german";
         }
-        else if (language == "french") {
-            setContent(Translation[Translation.current].french)
+        else if (language === "french") {
+            Translation.current = "french";
         }
-        Translation.current = language;
     }, [language]);
 
     return (
@@ -27,5 +25,5 @@ export default function Language() {
                 <option value="french">French</option>
             </select>
         </>
-    )
+    );
 }
