@@ -3,7 +3,7 @@ import { Menu } from "../components/components";
 import styles from "./home.module.css";
 import Loading from "../components/loading.jsx";
 import { GestureRecognizer, FilesetResolver } from "@mediapipe/tasks-vision";
-import model from "../models/gesture_recognizer_asl_30_epoch.task";
+import model from "../models/gesture_recognizer.task";
 
 const MainComponent = () => {
   const [loading, setLoading] = useState(true);
@@ -14,6 +14,35 @@ const MainComponent = () => {
   const runningModeRef = useRef("VIDEO");
   let count = 0;
   let prev = "";
+
+  async function predictWebcam(video, lastVideoTime) {
+    let nowInMs = Date.now();
+    let results;
+    if (video.currentTime !== lastVideoTime) {
+      lastVideoTime = video.currentTime;
+      results = gestureRecognizer.recognizeForVideo(video, nowInMs);
+    }
+
+    try {
+      setCurrentLetter(results.gestures[0][0].categoryName);
+
+      if (results.gestures[0][0].categoryName === prev) {
+        count += 1;
+      } else {
+        prev = results.gestures[0][0].categoryName;
+        count = 0;
+      }
+      if (count === 2) {
+        count = 0;
+        setCurrentSentence(
+          (prevSentence) => prevSentence + results.gestures[0][0].categoryName
+        );
+        prev = "";
+      }
+    } catch (error) {
+      setCurrentLetter("");
+    }
+  }
 
   useEffect(() => {
     const createGestureRecognizer = async () => {
@@ -34,56 +63,29 @@ const MainComponent = () => {
   }, []);
 
   useEffect(() => {
-    if (loading) {
+    if (loading || !gestureRecognizer) {
       return;
     } else {
       const video = videoRef.current;
 
       let lastVideoTime = -1;
-      let results = undefined;
 
       const constraints = { video: true };
       navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
         video.srcObject = stream;
         video.addEventListener("loadeddata", () => {
           if (gestureRecognizer) {
-            predictWebcam();
-            let intervalId = setInterval(predictWebcam, 500);
+            predictWebcam(video, lastVideoTime);
+            let intervalId = setInterval(
+              () => predictWebcam(video, lastVideoTime),
+              250
+            );
             return () => clearInterval(intervalId);
           }
         });
       });
-
-      async function predictWebcam() {
-        let nowInMs = Date.now();
-        if (video.currentTime !== lastVideoTime) {
-          lastVideoTime = video.currentTime;
-          results = gestureRecognizer.recognizeForVideo(video, nowInMs);
-        }
-
-        try {
-          setCurrentLetter(results.gestures[0][0].categoryName);
-
-          if (results.gestures[0][0].categoryName === prev) {
-            count += 1;
-          } else {
-            prev = results.gestures[0][0].categoryName;
-            count = 0;
-          }
-          if (count === 2) {
-            count = 0;
-            setCurrentSentence(
-              (prevSentence) =>
-                prevSentence + results.gestures[0][0].categoryName
-            );
-            prev = "";
-          }
-        } catch (error) {
-          setCurrentLetter("");
-        }
-      }
     }
-  }, [gestureRecognizer]);
+  }, [loading, gestureRecognizer]);
 
   return (
     <>
