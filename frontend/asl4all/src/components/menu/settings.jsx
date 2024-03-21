@@ -1,57 +1,47 @@
-import { Link } from "react-router-dom";
-import { Block, Dropdown } from "../components";
-import { Font, Size, Color, Opacity, QR } from "../settings/main";
-import PropTypes from "prop-types";
-import styles from "./settings.module.css";
+import { Link } from 'react-router-dom';
+import { Block, Dropdown } from '../components';
+import { Font, Size, Color, Opacity, QR, Language } from '../settings/main';
+import Translation from "../../languages.json";
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types'; // Import PropTypes
+
+import styles from './settings.module.css';
 
 export default function Settings({ open }) {
-  const display = (
-    <>
-      <Dropdown key="font" title={"Font"} content={<Font />} />
-      <Dropdown
-        key="minTextSize"
-        title={"Minimum Text size"}
-        content={<Size />}
-      />
-      <Dropdown key="textColor" title={"Text Color"} content={<Color />} />
-      <Dropdown key="opacity" title={"Opacity"} content={<Opacity />} />
-    </>
-  );
+    const [time, setTime] = useState(new Date());
 
-  const settings = [
-    <Dropdown
-      key="displaySettings"
-      title={"Display Settings"}
-      content={display}
-    />,
-    <Dropdown
-      key="languageSettings"
-      title={"Language Settings"}
-      content={<></>}
-    />,
-    <Dropdown key="qrCode" title={"QR Code"} content={<QR />} />,
-  ];
+    useEffect(() => {
+        const interval = setInterval(() => setTime(new Date()), 1000); // Use the interval if needed
+        return () => clearInterval(interval); // Cleanup interval on component unmount
+    }, [time]);
 
-  return (
-    <div className={`${styles.wrapper} ${open ? styles.open : ""}`}>
-      <h1>Settings</h1>
-      <div className={styles.settings}>
-        <Block key="settings" content={settings} />
-        <Block
-          key="feedback"
-          content={[
-            <Link key="feedbackLink" to="/feedback" className={styles.feedback}>
-              Feedback
-            </Link>,
-          ]}
-        />
-      </div>
-      <div className={styles.donate}>Donate</div>
-    </div>
-  );
+    const display = (
+        <>
+            <Dropdown key="font" title={Translation[Translation.current].font} content={<Font />} />
+            <Dropdown key="size" title={Translation[Translation.current].minTextSize} content={<Size />} />
+            <Dropdown key="color" title={Translation[Translation.current].textColor} content={<Color />} />
+            <Dropdown key="opacity" title={Translation[Translation.current].opacity} content={<Opacity />} />
+        </>
+    );
+
+    const settings = [
+        <Dropdown key="display" title={Translation[Translation.current].displaySettings} content={display} />,
+        <Dropdown key="language" title={Translation[Translation.current].languageSettings} content={<Language />} />,
+        <Dropdown key="qr" title={Translation[Translation.current].qrCode} content={<QR />} />
+    ];
+
+    return (
+        <div className={`${styles.wrapper} ${open ? styles.open : ''}`}>
+            <h1>{Translation[Translation.current].settings}</h1>
+            <div className={styles.settings}>
+                <Block content={settings} />
+                <Block content={[<Link key="feedback" to="/feedback" className={styles.feedback}>{Translation[Translation.current].feedback}</Link>]} />
+            </div>
+            <div className={styles.dontate}>{Translation[Translation.current].donate}</div>
+        </div>
+    );
 }
 
-// PropTypes validation
 Settings.propTypes = {
   open: PropTypes.bool.isRequired,
 };

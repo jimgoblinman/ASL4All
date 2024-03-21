@@ -1,7 +1,8 @@
-import React from "react";
+import React from "react";  
 import { Link } from "react-router-dom";
 import { FaHome } from "react-icons/fa";
 import { IoMdSend } from "react-icons/io";
+import Translation from "../languages.json";
 
 import styles from "./feedback.module.css";
 
@@ -13,21 +14,19 @@ const Feedback = () => {
       </Link>
       <form>
         <div className={styles.feedbackForm}>
-          <input placeholder="Name (Optional)" />
+          <input placeholder={Translation[Translation.current].name} />
 
           <select name="feedback-type" id="feedback-type">
-            <option value="problem">Problem</option>
-            <option value="suggestion">Suggestion</option>
-            <option value="praise">Praise</option>
-            <option value="other">Other</option>
+            <option value="problem">{Translation[Translation.current].problem}</option>
+            <option value="suggestion">{Translation[Translation.current].suggestion}</option>
+            <option value="praise">{Translation[Translation.current].praise}</option>
+            <option value="other">{Translation[Translation.current].other}</option>
           </select>
 
-          <input placeholder="E-Mail address (Optional)" />
-          <textarea placeholder="Message" required />
+          <input placeholder={Translation[Translation.current].email} />
+          <textarea placeholder={Translation[Translation.current].message} required />
 
-          <button type="submit">
-            Send <IoMdSend />
-          </button>
+          <button type="submit">{Translation[Translation.current].send} <IoMdSend /></button>
         </div>
       </form>
     </div>
