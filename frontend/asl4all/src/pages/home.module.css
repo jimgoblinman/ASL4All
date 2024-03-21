@@ -3,6 +3,7 @@
     width: 100svw;
 
     background-color: black;
+    font-size: var(--text-size);
 }
 
 .media {
@@ -29,9 +30,10 @@
     overflow: hidden;
 
     border-radius: 1rem;
-    
+
     backdrop-filter: blur(5px);
-    background-color: rgba(255, 255, 255, 0.75);
+    background-color: rgba(255, 255, 255, var(--box-opacity));
+    opacity: 1;
 }
 
 .text_box > div {
@@ -44,12 +46,12 @@
     align-items: center;
 
 
-    font-size: 2rem;
+    font-size: var(--text-size);
 
     background-color: #858585;
 }
 
-.text_box > p { font-size: 4rem; }
+.text_box > p { font-size: var(--text-size); }
 
 .active {
     background-color: #858585 !important;

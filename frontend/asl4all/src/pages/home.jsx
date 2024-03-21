@@ -107,7 +107,7 @@ const MainComponent = () => {
                 {" "}
                 {currentLetter}{" "}
               </div>
-              <h1 className="text-3xl">{currentSentence} </h1>
+              <p className="current_sentence">{currentSentence} </p>
             </div>
           </div>
         </>

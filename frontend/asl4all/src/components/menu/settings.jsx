@@ -2,27 +2,18 @@ import { Link } from 'react-router-dom';
 import { Block, Dropdown } from '../components';
 import { Font, Size, Color, Opacity, QR, Language } from '../settings/main';
 import Translation from "../../languages.json";
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types'; // Import PropTypes
 
 import styles from './settings.module.css';
 
 export default function Settings({ open }) {
-    const [time, setTime] = useState(new Date());
-
-    useEffect(() => {
-        const interval = setInterval(() => setTime(new Date()), 1000); // Use the interval if needed
-        return () => clearInterval(interval); // Cleanup interval on component unmount
-    }, [time]);
-
-    const display = (
-        <>
-            <Dropdown key="font" title={Translation[Translation.current].font} content={<Font />} />
-            <Dropdown key="size" title={Translation[Translation.current].minTextSize} content={<Size />} />
-            <Dropdown key="color" title={Translation[Translation.current].textColor} content={<Color />} />
-            <Dropdown key="opacity" title={Translation[Translation.current].opacity} content={<Opacity />} />
-        </>
-    );
+    const display = <>
+        <Dropdown title={'Font'} content={<Font />} />
+        <Dropdown title={'Minimum Text size'} content={<Size />} />
+        <Dropdown title={'Text Color'} content={<Color />} />
+        <Dropdown title={'Opacity'} content={<Opacity />} />
+    </>
 
     const settings = [
         <Dropdown key="display" title={Translation[Translation.current].displaySettings} content={display} />,
