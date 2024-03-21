@@ -1,0 +1,66 @@
+{
+    "current": "english",
+    "english": {
+        "settings": "Settings",
+        "displaySettings": "Display Settings",
+        "languageSettings": "Language Settings",
+        "qrCode": "QR Code",
+        "feedback": "Feedback",
+        "donate": "Donate",
+        "font": "Font",
+        "minTextSize": "Minimum Text size",
+        "textColor": "Text Color",
+        "opacity": "Opacity",
+
+        "name": "Name (optional)",
+        "email": "Email (optional)",
+        "message": "Message",
+        "problem": "Problem",
+        "suggestion": "Suggestion",
+        "praise": "Praise",
+        "other": "Other",
+        "send": "Send"
+    },
+    "german": {
+        "settings": "Einstellungen",
+        "displaySettings": "Anzeigeeinstellungen",
+        "languageSettings": "Spracheinstellungen",
+        "qrCode": "QR-Code",
+        "feedback": "Rückmeldung",
+        "donate": "Spenden",
+        "font": "Schriftart",
+        "minTextSize": "Mindesttextgröße",
+        "textColor": "Textfarbe",
+        "opacity": "Deckkraft",
+
+        "name": "Name (optional)",
+        "email": "E-Mail (optional)",
+        "message": "Nachricht",
+        "problem": "Problem",
+        "suggestion": "Vorschlag",
+        "praise": "Lob",
+        "other": "Andere",
+        "send": "Senden"
+    },
+    "french": {
+        "settings": "Paramètres",
+        "displaySettings": "Paramètres d'affichage",
+        "languageSettings": "Paramètres de langue",
+        "qrCode": "Code QR",
+        "feedback": "Commentaire",
+        "donate": "Donner",
+        "font": "Police de caractère",
+        "minTextSize": "Taille de texte minimale",
+        "textColor": "Couleur du texte",
+        "opacity": "Opacité",
+
+        "name": "Nom (optionnel)",
+        "email": "E-mail (optionnel)",
+        "message": "Message",
+        "problem": "Problème",
+        "suggestion": "Suggestion",
+        "praise": "Éloge",
+        "other": "Autre",
+        "send": "Envoyer"
+    }
+}
