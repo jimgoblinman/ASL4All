@@ -34,10 +34,3 @@ jobs:
         run: |
           cd frontend/asl4all
           npm run build
-
-      #- name: Deploy project
-      #  run: |
-      #    cd frontend/asl4all
-      #    npm run deploy
-      #- name: Run tests
-      #run: npm
