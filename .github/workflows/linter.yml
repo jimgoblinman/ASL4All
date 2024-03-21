@@ -26,14 +26,14 @@ jobs:
       - name: Change directory to frontend/asl4all
         run: cd frontend/asl4all
 
+      - name: Echo Secret Value
+        run: echo "The value of the secret 'Linter' is ${{ secrets.GITHUB_TOKEN }}"
+        
       - name: Set up Super Linter
         uses: super-linter/super-linter@v6.3.0
         env:
           VALIDATE_ALL_CODEBASE: true
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Echo Secret Value
-        run: echo "The value of the secret 'Linter' is ${{ secrets.GITHUB_TOKEN }}"
 
       - name: Run Super Linter
         run: |
