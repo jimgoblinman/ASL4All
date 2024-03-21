@@ -10,8 +10,12 @@ export default function ColorPicker() {
   };
 
   return (
-    <div className='flex justify-center items-center'>
-      <ChromePicker color={textColor} onChange={handleChange} />
+    <div className="flex justify-center items-center">
+      <div className="bg-black/75 p-5 rounded-[0.7rem] bg-blur-md min-w-0 w-full max-w-md">
+        <div className="flex justify-center max-w-full w-full">
+          <ChromePicker color={textColor} onChange={handleChange} />
+        </div>
+      </div>
     </div>
   );
 }

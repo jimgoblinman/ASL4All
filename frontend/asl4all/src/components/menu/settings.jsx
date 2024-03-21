@@ -7,7 +7,7 @@ import styles from './settings.module.css'
 export default function Settings({ open }) {
     const display = <>
         <Dropdown title={'Font'} content={<Font />} />
-        <Dropdown title={'Minimum Text size'} content={<Size />} />
+        <Dropdown title={'Text size'} content={<Size />} />
         <Dropdown title={'Text Color'} content={<Color />} />
         <Dropdown title={'Opacity'} content={<Opacity />} />
     </>

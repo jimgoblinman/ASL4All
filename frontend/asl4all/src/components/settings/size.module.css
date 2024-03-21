@@ -4,12 +4,3 @@
     -appearance: none;
 
 }
-
-.slider::-webkit-slider-thumb {
-    @apply ;
-}
-
-.slider::-moz-range-thumb {
-    @apply ;
-}
-
