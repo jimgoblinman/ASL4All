@@ -75,11 +75,16 @@ const MainComponent = () => {
         video.srcObject = stream;
         video.addEventListener("loadeddata", () => {
           if (gestureRecognizer) {
+<<<<<<< HEAD
+            predictWebcam();
+            let intervalId = setInterval(predictWebcam, 250);
+=======
             predictWebcam(video, lastVideoTime);
             let intervalId = setInterval(
               () => predictWebcam(video, lastVideoTime),
               250
             );
+>>>>>>> 158c946a65b2d6b685a7deb0a6072cfdb0ae36b0
             return () => clearInterval(intervalId);
           }
         });
