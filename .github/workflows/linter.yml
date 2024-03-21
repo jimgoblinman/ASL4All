@@ -14,6 +14,9 @@ jobs:
   super-linter:
     name: Lint Codebase
     runs-on: ubuntu-latest
+    env:
+      VALIDATE_ALL_CODEBASE: true
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -28,15 +31,10 @@ jobs:
 
       - name: Echo Secret Value
         run: echo "The value of the secret 'Linter' is ${{ secrets.GITHUB_TOKEN }}"
-        
+
       - name: Set up Super Linter
         uses: super-linter/super-linter@v6.3.0
-        env:
-          VALIDATE_ALL_CODEBASE: true
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run Super Linter
         run: |
-          cd frontend/asl4all
           ./bin/run
-          env:
