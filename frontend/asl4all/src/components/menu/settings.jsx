@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { Block, Dropdown } from '../components';
 import { Font, Size, Color, Opacity, QR, Language } from '../settings/main';
 import Translation from "../../languages.json";
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types'; // Import PropTypes
 
 import styles from './settings.module.css';
