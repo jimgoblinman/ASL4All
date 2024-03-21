@@ -13,7 +13,7 @@ export default function Settings({ open }) {
     useEffect(() => {
         const interval = setInterval(() => setTime(new Date()), 1000); // Use the interval if needed
         return () => clearInterval(interval); // Cleanup interval on component unmount
-    }, []);
+    }, [time]);
 
     const display = (
         <>
