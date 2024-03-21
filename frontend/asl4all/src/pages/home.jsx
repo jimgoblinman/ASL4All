@@ -3,7 +3,7 @@ import { Menu } from "../components/components";
 import styles from "./home.module.css";
 import Loading from "../components/loading.jsx";
 import { GestureRecognizer, FilesetResolver } from "@mediapipe/tasks-vision";
-import model from "../models/gesture_recognizer_asl_30_epoch.task";
+import model from "../models/gesture_recognizer.task";
 
 const MainComponent = () => {
   const [loading, setLoading] = useState(true);
@@ -48,7 +48,7 @@ const MainComponent = () => {
         video.addEventListener("loadeddata", () => {
           if (gestureRecognizer) {
             predictWebcam();
-            let intervalId = setInterval(predictWebcam, 500);
+            let intervalId = setInterval(predictWebcam, 250);
             return () => clearInterval(intervalId);
           }
         });
