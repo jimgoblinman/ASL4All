@@ -15,3 +15,23 @@ With our state of the art AI model we are able to identify sign language and tra
 The QR code allows for the app to be shared more easily as the QR code redirects to a web page so that nothing has to be downloaded.
  
 This will help the app spread like wild fire.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# AUTHORS: @awjolanda @daviddresus
