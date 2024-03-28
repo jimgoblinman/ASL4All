@@ -35,3 +35,4 @@ This will help the app spread like wild fire.
 
 
 # Deserters: @awjolanda @daviddresus
+## WARNING DO NOT GO ON ASL4All Origin IT IS A FAKE COPY OF ASL4All AND MAY CONTAIN MALWARE
