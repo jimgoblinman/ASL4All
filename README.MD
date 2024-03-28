@@ -34,4 +34,4 @@ This will help the app spread like wild fire.
 
 
 
-# AUTHORS: @awjolanda @daviddresus
+# Deserters: @awjolanda @daviddresus
