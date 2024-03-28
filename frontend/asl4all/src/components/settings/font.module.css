@@ -1,0 +1,22 @@
+select {
+}
+
+.fontArial {
+    @apply font-arial;
+}
+
+.fontCalibri {
+    @apply font-arial;
+}
+
+.fontGillSansMt {
+    @apply font-gill-sans-mt;
+}
+
+.fontConsolas {
+    font-family: Consolas, cursive;
+}   
+
+.fontInter {
+    @apply font-inter;
+}
