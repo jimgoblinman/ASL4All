@@ -14,9 +14,9 @@ const MainComponent = () => {
   const [facingMode, setFacingMode] = useState("user");
   const videoRef = useRef(null);
   const runningModeRef = useRef("VIDEO");
-  let count = 0;
-  let prev = "";
-  let current_word = "";
+  let count;
+  let prev;
+  let current_word;
 
   async function predictWebcam(video, lastVideoTime) {
     let nowInMs = Date.now();
@@ -38,9 +38,8 @@ const MainComponent = () => {
       }
       if (count === 2) {
         count = 0;
-        if (current_word === "space") {
-          current_word = " ";
-        } else if (current_word === "del") {
+        if (current_word === "space") current_word = " ";
+        if (current_word === "del") {
           setCurrentSentence((prevSentence) => {
             if (prevSentence.length > 0) {
               return prevSentence.slice(0, -1);
@@ -111,10 +110,10 @@ const MainComponent = () => {
   }, [loading, gestureRecognizer, facingMode]);
 
   const toggleFacingMode = () => {
+    setLoading(true);
+    setGestureRecognizer(null);
     setFacingMode((prevMode) => (prevMode === "user" ? "environment" : "user"));
     console.log(facingMode);
-
-    window.location.reload(false);
   };
 
   return (
