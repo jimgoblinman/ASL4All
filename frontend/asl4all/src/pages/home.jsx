@@ -4,16 +4,19 @@ import styles from "./home.module.css";
 import Loading from "../components/loading.jsx";
 import { GestureRecognizer, FilesetResolver } from "@mediapipe/tasks-vision";
 import model from "../models/gesture_recognizer.task";
+import { MdOutlineCameraswitch } from "react-icons/md";
 
 const MainComponent = () => {
   const [loading, setLoading] = useState(true);
   const [gestureRecognizer, setGestureRecognizer] = useState(null);
   const [currentLetter, setCurrentLetter] = useState("");
   const [currentSentence, setCurrentSentence] = useState("");
+  const [facingMode, setFacingMode] = useState("user");
   const videoRef = useRef(null);
   const runningModeRef = useRef("VIDEO");
   let count = 0;
   let prev = "";
+  let current_word = "";
 
   async function predictWebcam(video, lastVideoTime) {
     let nowInMs = Date.now();
@@ -25,19 +28,30 @@ const MainComponent = () => {
 
     try {
       setCurrentLetter(results.gestures[0][0].categoryName);
+      current_word = results.gestures[0][0].categoryName;
 
-      if (results.gestures[0][0].categoryName === prev) {
+      if (current_word === prev) {
         count += 1;
       } else {
-        prev = results.gestures[0][0].categoryName;
+        prev = current_word;
         count = 0;
       }
       if (count === 2) {
         count = 0;
-        setCurrentSentence(
-          (prevSentence) => prevSentence + results.gestures[0][0].categoryName
-        );
-        prev = "";
+        if (current_word === "space") {
+          current_word = " ";
+        } else if (current_word === "del") {
+          setCurrentSentence((prevSentence) => {
+            if (prevSentence.length > 0) {
+              return prevSentence.slice(0, -1);
+            }
+            return prevSentence;
+          });
+          prev = "";
+        } else {
+          setCurrentSentence((prevSentence) => prevSentence + current_word);
+          prev = "";
+        }
       }
     } catch (error) {
       setCurrentLetter("");
@@ -54,7 +68,7 @@ const MainComponent = () => {
           modelAssetPath: model,
           delegate: "CPU",
         },
-        runningMode: runningModeRef.current, // Use current value
+        runningMode: runningModeRef.current,
       });
       setGestureRecognizer(recognizer);
       setLoading(false);
@@ -70,7 +84,7 @@ const MainComponent = () => {
 
       let lastVideoTime = -1;
 
-      const constraints = { video: true };
+      const constraints = { video: { facingMode } };
       navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
         video.srcObject = stream;
         video.addEventListener("loadeddata", () => {
@@ -85,7 +99,12 @@ const MainComponent = () => {
         });
       });
     }
-  }, [loading, gestureRecognizer]);
+  }, [loading, gestureRecognizer, facingMode]);
+
+  const toggleFacingMode = () => {
+    window.location.reload(false);
+    setFacingMode((prevMode) => (prevMode === "user" ? "environment" : "user"));
+  };
 
   return (
     <>
@@ -101,13 +120,19 @@ const MainComponent = () => {
               autoPlay
               className="h-full w-full object-cover object-center"
             />
-
+            <MdOutlineCameraswitch
+              size={81}
+              color="white"
+              onClick={toggleFacingMode}
+              className={styles.switchButton}
+            >
+              Switch Camera
+            </MdOutlineCameraswitch>
             <div className={styles.text_box}>
               <div className="box-content h-32 w-32 absolute top-0 right-0 flex justify-center items-center bg-gray-600 rounded-2xl">
-                {" "}
-                {currentLetter}{" "}
+                {currentLetter}
               </div>
-              <p className="current_sentence">{currentSentence} </p>
+              <p className="current_sentence">{currentSentence}</p>
             </div>
           </div>
         </>
