@@ -84,26 +84,37 @@ const MainComponent = () => {
 
       let lastVideoTime = -1;
 
-      const constraints = { video: { facingMode } };
-      navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
-        video.srcObject = stream;
-        video.addEventListener("loadeddata", () => {
-          if (gestureRecognizer) {
-            predictWebcam(video, lastVideoTime);
-            let intervalId = setInterval(
-              () => predictWebcam(video, lastVideoTime),
-              250
-            );
-            return () => clearInterval(intervalId);
-          }
-        });
-      });
+      if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        const constraints = { video: { facingMode } };
+        navigator.mediaDevices
+          .getUserMedia(constraints)
+          .then((stream) => {
+            video.srcObject = stream;
+            video.addEventListener("loadeddata", () => {
+              if (gestureRecognizer) {
+                predictWebcam(video, lastVideoTime);
+                let intervalId = setInterval(
+                  () => predictWebcam(video, lastVideoTime),
+                  250
+                );
+                return () => clearInterval(intervalId);
+              }
+            });
+          })
+          .catch((error) => {
+            console.error("Error accessing webcam: ", error);
+          });
+      } else {
+        console.error("getUserMedia not supported on this browser/device.");
+      }
     }
   }, [loading, gestureRecognizer, facingMode]);
 
   const toggleFacingMode = () => {
-    window.location.reload(false);
     setFacingMode((prevMode) => (prevMode === "user" ? "environment" : "user"));
+    console.log(facingMode);
+
+    window.location.reload(false);
   };
 
   return (
@@ -112,6 +123,7 @@ const MainComponent = () => {
         <Loading />
       ) : (
         <>
+          {console.log(facingMode)}
           <div className={styles.wrapper}>
             <Menu />
             <video
