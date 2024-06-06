@@ -37,12 +37,12 @@
 .content {
     margin: 0 0.5rem 0 0.5rem;
     max-height: 0;
-    overflow-y: hidden;
+    /*overflow-y: hidden;*/
     transition: 0.5s ease;
 }
 
 .open > .content {
     margin: 0.5rem;
     max-height: 50svh;
-    overflow-y: scroll;
+    /*overflow-y: scroll;*/
 }

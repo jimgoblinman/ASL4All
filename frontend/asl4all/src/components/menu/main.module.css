@@ -37,4 +37,7 @@
     rotate: -45deg;
 }
 
-.open { transform: translateX(calc(100svw - 7rem)); }
+.open { 
+    transform: translateX(calc(100svw - 7rem)); 
+
+}

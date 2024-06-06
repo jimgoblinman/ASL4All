@@ -19,3 +19,6 @@ code {
     font-family: var(--font);
 }
 
+:root {
+    --text-size: 2.5vw;
+}
