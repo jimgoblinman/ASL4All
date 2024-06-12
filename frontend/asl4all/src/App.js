@@ -8,7 +8,7 @@ export default function App() {
         <Router>
             <Routes>
                 <Route path='/asl4all' element={<Home/>} />
-                <Route path="/*" element={<Navigate to="/asl4all" />} />
+                <Route path="/*" element={<Navigate to="/asl4all/" />} />
                 <Route path="/feedback" element={<Feedback/>} />
                 <Route path="/training" element={<Training/>} />
             </Routes>

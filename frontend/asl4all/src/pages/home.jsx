@@ -4,16 +4,20 @@ import styles from "./home.module.css";
 import Loading from "../components/loading.jsx";
 import { GestureRecognizer, FilesetResolver } from "@mediapipe/tasks-vision";
 import model from "../models/gesture_recognizer.task";
+import { MdOutlineCameraswitch } from "react-icons/md";
+import Webcam from "react-webcam";
+
 
 const MainComponent = () => {
   const [loading, setLoading] = useState(true);
   const [gestureRecognizer, setGestureRecognizer] = useState(null);
   const [currentLetter, setCurrentLetter] = useState("");
   const [currentSentence, setCurrentSentence] = useState("");
-  const videoRef = useRef(null);
+  const [facingMode, setFacingMode] = useState("user");
+
+  const cameraRef = useRef(null);
   const runningModeRef = useRef("VIDEO");
-  let count = 0;
-  let prev = "";
+  let count, prev, current_letter;
 
   async function predictWebcam(video, lastVideoTime) {
     let nowInMs = Date.now();
@@ -25,19 +29,29 @@ const MainComponent = () => {
 
     try {
       setCurrentLetter(results.gestures[0][0].categoryName);
+      current_letter = results.gestures[0][0].categoryName;
 
-      if (results.gestures[0][0].categoryName === prev) {
+      if (current_letter === prev) {
         count += 1;
       } else {
-        prev = results.gestures[0][0].categoryName;
+        prev = current_letter;
         count = 0;
       }
       if (count === 2) {
         count = 0;
-        setCurrentSentence(
-          (prevSentence) => prevSentence + results.gestures[0][0].categoryName
-        );
-        prev = "";
+        if (current_letter === "space") current_letter = " ";
+        if (current_letter === "del") {
+          setCurrentSentence((prevSentence) => {
+            if (prevSentence.length > 0) {
+              return prevSentence.slice(0, -1);
+            }
+            return prevSentence;
+          });
+          prev = "";
+        } else {
+          setCurrentSentence((prevSentence) => prevSentence + current_letter);
+          prev = "";
+        }
       }
     } catch (error) {
       setCurrentLetter("");
@@ -54,38 +68,46 @@ const MainComponent = () => {
           modelAssetPath: model,
           delegate: "CPU",
         },
-        runningMode: runningModeRef.current, // Use current value
+        runningMode: runningModeRef.current,
       });
       setGestureRecognizer(recognizer);
       setLoading(false);
     };
     createGestureRecognizer();
-  }, []);
+  }, [facingMode]);
 
   useEffect(() => {
     if (loading || !gestureRecognizer) {
       return;
-    } else {
-      const video = videoRef.current;
+    }
 
-      let lastVideoTime = -1;
+    const video = cameraRef.current.video;
 
-      const constraints = { video: true };
-      navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
-        video.srcObject = stream;
-        video.addEventListener("loadeddata", () => {
-          if (gestureRecognizer) {
+    let lastVideoTime = -1;
+
+    if (video) {
+      video.addEventListener("loadeddata", () => {
+        if (gestureRecognizer) {
+          predictWebcam(video, lastVideoTime);
+          const intervalId = setInterval(() => {
             predictWebcam(video, lastVideoTime);
-            let intervalId = setInterval(
-              () => predictWebcam(video, lastVideoTime),
-              250
-            );
-            return () => clearInterval(intervalId);
-          }
-        });
+          }, 250);
+          return () => clearInterval(intervalId);
+        }
       });
     }
-  }, [loading, gestureRecognizer]);
+  }, [loading, gestureRecognizer, facingMode, cameraRef]);
+
+  const toggleFacingMode = () => {
+    setLoading(true);
+    setGestureRecognizer(null);
+    setFacingMode(facingMode === 'user' ? 'environment' : 'user');
+  };
+
+  const videoConstraints = {
+    facingMode: facingMode
+  };
+
 
   return (
     <>
@@ -95,19 +117,22 @@ const MainComponent = () => {
         <>
           <div className={styles.wrapper}>
             <Menu />
-            <video
-              id="webcam"
-              ref={videoRef}
-              autoPlay
+            <Webcam
+              ref={cameraRef}
+              videoConstraints={videoConstraints}
               className="h-full w-full object-cover object-center"
             />
-
+            <MdOutlineCameraswitch
+              size={81}
+              color="white"
+              onClick={toggleFacingMode}
+              className={styles.switchButton}
+            />
             <div className={styles.text_box}>
               <div className="box-content h-32 w-32 absolute top-0 right-0 flex justify-center items-center bg-gray-600 rounded-2xl">
-                {" "}
-                {currentLetter}{" "}
+                {currentLetter}
               </div>
-              <p className="current_sentence">{currentSentence} </p>
+              <p className="current_sentence">{currentSentence}</p>
             </div>
           </div>
         </>
