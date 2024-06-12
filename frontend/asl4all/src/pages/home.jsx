@@ -6,7 +6,7 @@ import { GestureRecognizer, FilesetResolver } from "@mediapipe/tasks-vision";
 import model from "../models/gesture_recognizer.task";
 import { MdOutlineCameraswitch } from "react-icons/md";
 import Webcam from "react-webcam";
-
+import { FaRegTrashAlt } from "react-icons/fa";
 
 const MainComponent = () => {
   const [loading, setLoading] = useState(true);
@@ -101,13 +101,16 @@ const MainComponent = () => {
   const toggleFacingMode = () => {
     setLoading(true);
     setGestureRecognizer(null);
-    setFacingMode(facingMode === 'user' ? 'environment' : 'user');
+    setFacingMode(facingMode === "user" ? "environment" : "user");
   };
 
   const videoConstraints = {
-    facingMode: facingMode
+    facingMode: facingMode,
   };
 
+  const clearText = () => {
+    setCurrentSentence("");
+  };
 
   return (
     <>
@@ -129,9 +132,12 @@ const MainComponent = () => {
               className={styles.switchButton}
             />
             <div className={styles.text_box}>
-              <div className="box-content h-32 w-32 absolute top-0 right-0 flex justify-center items-center bg-gray-600 rounded-2xl">
-                {currentLetter}
-              </div>
+              <FaRegTrashAlt
+                className="absolute top-0 left-0 m-3 "
+                onClick={clearText}
+              />
+              <div className="absolute top-0 right-4 m-2">{currentLetter}</div>
+
               <p className="current_sentence">{currentSentence}</p>
             </div>
           </div>
