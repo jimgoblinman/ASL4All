@@ -10,6 +10,7 @@
 }
 
 .toggle > span {
+    height: 100%;
     position: absolute;
     
     top: 50%;
@@ -37,7 +38,7 @@
     rotate: -45deg;
 }
 
-.open { 
+.open {
     transform: translateX(calc(100svw - 7rem)); 
 
 }

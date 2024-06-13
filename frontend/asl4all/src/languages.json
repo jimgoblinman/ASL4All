@@ -2,13 +2,13 @@
     "current": "english",
     "english": {
         "settings": "Settings",
-        "displaySettings": "Display Settings",
-        "languageSettings": "Language Settings",
+        "displaySettings": "General",
+        "languageSettings": "Language",
         "qrCode": "QR Code",
         "feedback": "Feedback",
         "donate": "Donate",
         "font": "Font",
-        "minTextSize": "Minimum Text size",
+        "minTextSize": "Text size",
         "textColor": "Text Color",
         "opacity": "Opacity",
 
@@ -22,14 +22,14 @@
         "send": "Send"
     },
     "german": {
-        "settings": "Einstellungen",
+        "settings": "Allgemein",
         "displaySettings": "Anzeigeeinstellungen",
         "languageSettings": "Spracheinstellungen",
         "qrCode": "QR-Code",
         "feedback": "Rückmeldung",
         "donate": "Spenden",
         "font": "Schriftart",
-        "minTextSize": "Mindesttextgröße",
+        "minTextSize": "Text Grösse",
         "textColor": "Textfarbe",
         "opacity": "Deckkraft",
 
@@ -43,15 +43,15 @@
         "send": "Senden"
     },
     "french": {
-        "settings": "Paramètres",
-        "displaySettings": "Paramètres d'affichage",
-        "languageSettings": "Paramètres de langue",
+        "settings": "Généraux",
+        "displaySettings": "Affichage",
+        "languageSettings": "Langue",
         "qrCode": "Code QR",
         "feedback": "Commentaire",
         "donate": "Donner",
-        "font": "Police de caractère",
-        "minTextSize": "Taille de texte minimale",
-        "textColor": "Couleur du texte",
+        "font": "Police",
+        "minTextSize": "Taille de texte",
+        "textColor": "Couleur",
         "opacity": "Opacité",
 
         "name": "Nom (optionnel)",

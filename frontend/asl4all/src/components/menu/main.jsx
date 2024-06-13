@@ -12,9 +12,8 @@ export default function Menu() {
         <div onClick={() => setToggle(prev => !prev)} className={`${styles.toggle} ${toggle ? styles.open : ''}`}>
             <span></span>
             <span></span>
-            <span></span>
         </div>
-        <Settings open={toggle}/>
+        <div><Settings open={toggle}/></div>
         </>
     )
 }
