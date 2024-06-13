@@ -13,7 +13,7 @@ export default function Dropdown({ title, content }) {
       </div>
       <div className={styles.content}>{content}</div>
     </div>
-  );
+  ); 
 }
 
 Dropdown.propTypes = {
