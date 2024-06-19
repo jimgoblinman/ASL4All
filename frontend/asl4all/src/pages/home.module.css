@@ -1,66 +1,60 @@
 .wrapper {
-    height: 100svh;
-    width: 100svw;
+  height: 100svh;
+  width: 100svw;
 
-    background-color: black;
-    font-size: var(--text-size);
+  background-color: black;
+  font-size: var(--text-size);
 }
 
 .media {
-    height: 100%;
-    width: 100%;
-    background-image: url('https://cdn.pixabay.com/photo/2020/08/19/17/49/avatar-5501662_1280.png');
-    background-size: cover;
-    background-position: center;
+  height: 100%;
+  width: 100%;
+  background-image: url("https://cdn.pixabay.com/photo/2020/08/19/17/49/avatar-5501662_1280.png");
+  background-size: cover;
+  background-position: center;
 }
-
-  
 
 .text_box {
-    z-index: 10;
-    position: fixed;
-    bottom: 0;
+  z-index: 10;
+  position: fixed;
+  bottom: 0;
 
-    display: inline-block; /* Allows the box to adjust size based on content */
-    padding: 1rem; /* Adds padding to ensure space within the box */
+  display: inline-block; /* Allows the box to adjust size based on content */
+  padding: 1rem; /* Adds padding to ensure space within the box */
 
-    min-height: 25%; 
-    max-height: 60%;
-    width: calc(100% - 4rem);
+  min-height: 25%;
+  max-height: 60%;
+  width: calc(100% - 4rem);
 
-    margin: 2rem;
+  margin: 2rem;
 
-    
-    user-select: none;    
-    
-/* From https://css.glass */
-    background: rgba(255, 255, 255, 0.23);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.67);
-    }
+  user-select: none;
 
-.text_box > p {
-    padding-top: 2rem;
-
-    font-size: var(--text-size);
-    margin: 0; 
-    word-wrap: break-word; 
-    text-align: center; 
+  /* From https://css.glass */
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(11.4px);
+  -webkit-backdrop-filter: blur(11.4px);
+  border: 1px solid rgba(0, 0, 0, 0.15);
 }
 
+.text_box > p {
+  padding-top: 2rem;
 
+  font-size: var(--text-size);
+  margin: 0;
+  word-wrap: break-word;
+  text-align: center;
+}
 
 .active {
-    background-color: #858585 !important;
+  background-color: #858585 !important;
 }
 
 .switchButton {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    padding: 10px 20px;    
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 10px 20px;
 }
-  
