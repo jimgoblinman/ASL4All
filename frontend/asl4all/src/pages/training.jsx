@@ -14,28 +14,41 @@ export default function Training() {
     const [gestureRecognizer, setGestureRecognizer] = useState(null)
     const [facingMode, setFacingMode] = useState('user')
 
-    /*const [count, setCount] = useState(0)
-    const [prev, setPrev] = useState('')*/
-
     const runningModeRef = useRef('VIDEO')
     const cameraRef = useRef(null)
 
-    const predictWebcam = async (video, lastVideoTime) => {
-        let nowInMs = Date.now()
-        let results
+    let count = 0, prev = ''
 
-        if (video.currentTime !== lastVideoTime) {
-            lastVideoTime = video.currentTime
-            results = gestureRecognizer.recognizeForVideo(video, nowInMs)
-        }
+    const predictWebcam = async (video) => {
+        const results = gestureRecognizer.recognizeForVideo(video, Date.now())
 
         try {
-            console.log(results.gestures[0][0].categoryName)
-            //let currentLetter = results.gestures[0][0].categoryName
+            const currentLetter = results.gestures[0][0].categoryName
 
+            currentLetter === prev
+                ? count += 1
+                : prev = currentLetter
+
+            if (count < 4) return null
+            count = 0
+            prev = ''
             
+            switch (currentLetter) {
+                case 'space':
+                    console.log('space')
+                    break;
+                
+                case 'del':
+                    console.log('del')
+                    break;
+
+                default:
+                    console.log(currentLetter)
+            }
+            
+            return null
         } catch (err) {
-            return ''
+            return err
         }
     }
 
@@ -74,7 +87,7 @@ export default function Training() {
         video.addEventListener('loadeddata', () => {
             if (!gestureRecognizer) { return }
             const vebcam = setInterval(() => {
-                predictWebcam(video, -1)
+                predictWebcam(video)
             }, 250)
             return () => clearInterval(vebcam)
         })
@@ -95,7 +108,9 @@ export default function Training() {
                     onClick={toggleFacingMode}
                     className={styles.switchButton}
                 />
-                <div></div>
+                <div className={styles.textBox}>
+
+                </div>
             </div>
         }
         </>

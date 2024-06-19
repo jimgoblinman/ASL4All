@@ -12,3 +12,26 @@
     right: 20px;
     padding: 10px 20px;    
 }
+
+.textBox {
+    z-index: 10;
+    position: fixed;
+    bottom: 0;
+
+
+    margin: 2rem;
+    padding: 1rem;
+
+    min-height: 25%; 
+    max-height: 60%;
+    width: calc(100% - 4rem);
+
+    background: rgba(255, 255, 255, 0.23);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.67);
+
+    user-select: none;
+}
