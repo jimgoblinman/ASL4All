@@ -35,3 +35,12 @@
 
     user-select: none;
 }
+
+.textBox > p {
+    padding-top: 2rem;
+
+    font-size: var(--text-size);
+    margin: 0; 
+    word-wrap: break-word; 
+    text-align: center; 
+}
