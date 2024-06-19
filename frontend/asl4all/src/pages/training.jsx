@@ -1,27 +1,26 @@
 import { useState, useEffect, useRef } from 'react'
-import { GestureRecognizer, FilesetResolver } from '@mediapipe/tasks-vision'
 
+import Loading from '../components/loading.jsx'
+import Webcam from 'react-webcam'
 import model from '../models/gesture_recognizer.task'
 
-import Loading from '../components/loading'
+import { MdOutlineCameraswitch } from 'react-icons/md'
+import { GestureRecognizer, FilesetResolver } from '@mediapipe/tasks-vision'
 
 import styles from './training.module.css'
 
 export default function Training() {
-    const [gestureRecognizer, setGestureRecognizer] = useState(null)
-    const [currentLetter, setCurrentLetter] = useState('')
-    const [nextGuess, setNextGuess] = useState('')
     const [loading, setLoading] = useState(true)
+    const [gestureRecognizer, setGestureRecognizer] = useState(null)
+    const [facingMode, setFacingMode] = useState('user')
+
+    /*const [count, setCount] = useState(0)
+    const [prev, setPrev] = useState('')*/
 
     const runningModeRef = useRef('VIDEO')
-    const videoRef = useRef(null)
+    const cameraRef = useRef(null)
 
-    const trainingList = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
-
-    let count = 0
-    let prev = ''
-
-    async function predictWebcam(video, lastVideoTime) {
+    const predictWebcam = async (video, lastVideoTime) => {
         let nowInMs = Date.now()
         let results
 
@@ -31,18 +30,19 @@ export default function Training() {
         }
 
         try {
-            const letter = await results.gestures[0][0].categoryName
-            if (letter === prev || count >= 10) return count += 1
-            setCurrentLetter(letter)
-            count = 0
-            if (nextGuess == letter) await change()
-        } catch (error) {
-            setCurrentLetter('')
+            console.log(results.gestures[0][0].categoryName)
+            //let currentLetter = results.gestures[0][0].categoryName
+
+            
+        } catch (err) {
+            return ''
         }
     }
 
-    const change = async () => {
-        setNextGuess(trainingList[Math.floor(Math.random() * trainingList.length + 1)])
+    const toggleFacingMode = () => {
+        setLoading(true)
+        setGestureRecognizer(null)
+        setFacingMode(facingMode === 'user' ? 'environment' : 'user')
     }
 
     useEffect(() => {
@@ -53,56 +53,50 @@ export default function Training() {
 
             const recognizer = await GestureRecognizer.createFromOptions(vision, {
                 baseOptions: {
-                  modelAssetPath: model,
-                  delegate: 'CPU',
+                    modelAssetPath: model,
+                    delegate: 'CPU',
                 },
                 runningMode: runningModeRef.current,
             })
-
             setGestureRecognizer(recognizer)
             setLoading(false)
         }
-        
+
         createGestureRecognizer()
-    }, [])
+    }, [facingMode])
 
     useEffect(() => {
-        const setVideo = () => {
-            if (loading || !gestureRecognizer) return ''
-            const video = videoRef.current
-    
-            let lastVideoTime = -1
-    
-            const constraints = { video: true }
-            navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
-                video.srcObject = stream
-                video.addEventListener('loadeddata', () => {
-                    if (gestureRecognizer) {
-                        predictWebcam(video, lastVideoTime)
-                        let intervalId = setInterval(() => predictWebcam(video, lastVideoTime), 250)
-                        return () => clearInterval(intervalId)
-                    }
-                })
-            })
-        }
-        setNextGuess(trainingList[Math.floor(Math.random() * trainingList.length + 1)])
-        setVideo()
-    }, [loading, gestureRecognizer])
+        if (loading || !gestureRecognizer) { return }
+
+        const video = cameraRef.current.video
+
+        if (!video) { return }
+        video.addEventListener('loadeddata', () => {
+            if (!gestureRecognizer) { return }
+            const vebcam = setInterval(() => {
+                predictWebcam(video, -1)
+            }, 250)
+            return () => clearInterval(vebcam)
+        })
+    }, [gestureRecognizer])
 
     return (
         <>
-        {loading
+        { loading
             ? <Loading />
             : <div className={styles.wrapper}>
-                <video id='webcam' autoPlay className="h-full w-full object-cover object-center" ref={videoRef}/>
-
-                <div className={styles.text_box}>
-                    <div className='box-content h-32 w-32 absolute top-0 right-0 flex justify-center items-center bg-gray-600 rounded-2xl'>
-                        {nextGuess}
-                    </div>
-                    <p>{currentLetter} </p>
-                </div>
-          </div>
+                <Webcam ref={cameraRef}
+                    videoConstraints={{ facingMode: facingMode }}
+                    className="h-full w-full object-cover object-center"
+                />
+                <MdOutlineCameraswitch
+                    size={81}
+                    color='white'
+                    onClick={toggleFacingMode}
+                    className={styles.switchButton}
+                />
+                <div></div>
+            </div>
         }
         </>
     )
