@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 
 import Loading from '../components/loading.jsx'
 import Webcam from 'react-webcam'
+import { Menu } from '../components/components'
 import model from '../models/gesture_recognizer.task'
 
 import { MdOutlineCameraswitch } from 'react-icons/md'
@@ -9,45 +10,55 @@ import { GestureRecognizer, FilesetResolver } from '@mediapipe/tasks-vision'
 
 import styles from './training.module.css'
 
+const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+
+function getRandomCharacter() {
+    return characters.charAt(Math.floor(Math.random() * characters.length))
+}
+
 export default function Training() {
     const [loading, setLoading] = useState(true)
     const [gestureRecognizer, setGestureRecognizer] = useState(null)
     const [facingMode, setFacingMode] = useState('user')
 
+    const [currentLetter, setCurrentLetter] = useState('')
+    
     const runningModeRef = useRef('VIDEO')
     const cameraRef = useRef(null)
-
+    
     let count = 0, prev = ''
+    let currentCharacter = getRandomCharacter()
 
     const predictWebcam = async (video) => {
         const results = gestureRecognizer.recognizeForVideo(video, Date.now())
 
         try {
-            const currentLetter = results.gestures[0][0].categoryName
+            const letter = results.gestures[0][0].categoryName
 
-            currentLetter === prev
+            letter === prev
                 ? count += 1
-                : prev = currentLetter
+                : prev = letter
 
             if (count < 4) return null
             count = 0
             prev = ''
             
-            switch (currentLetter) {
+            switch (letter) {
                 case 'space':
-                    console.log('space')
                     break;
                 
                 case 'del':
-                    console.log('del')
                     break;
 
+                case currentCharacter:
+                    currentCharacter = getRandomCharacter()
+                    break;
+        
                 default:
-                    console.log(currentLetter)
+                    setCurrentLetter(letter)
             }
-            
-            return null
         } catch (err) {
+            setCurrentLetter('')
             return err
         }
     }
@@ -98,6 +109,7 @@ export default function Training() {
         { loading
             ? <Loading />
             : <div className={styles.wrapper}>
+                <Menu />
                 <Webcam ref={cameraRef}
                     videoConstraints={{ facingMode: facingMode }}
                     className="h-full w-full object-cover object-center"
@@ -109,7 +121,8 @@ export default function Training() {
                     className={styles.switchButton}
                 />
                 <div className={styles.textBox}>
-
+                    <div className="absolute top-0 right-4 m-2">{currentLetter}</div>
+                    <p>{currentCharacter}</p>
                 </div>
             </div>
         }

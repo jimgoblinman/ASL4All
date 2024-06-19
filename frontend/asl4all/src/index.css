@@ -5,6 +5,7 @@
 @tailwind utilities;
 
 * {
+    --text-size: 2rem;
     --font: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
