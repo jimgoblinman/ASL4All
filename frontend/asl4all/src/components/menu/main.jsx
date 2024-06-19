@@ -1,20 +1,25 @@
-import { useState } from 'react'
+import { useState } from "react";
 
-import Settings from './settings'
+import Settings from "./settings";
 
-import styles from './main.module.css'
+import styles from "./main.module.css";
 
 export default function Menu() {
-    const [toggle, setToggle] = useState(false)
+  const [toggle, setToggle] = useState(false);
 
-    return (
-        <>
-        <div onClick={() => setToggle(prev => !prev)} className={`${styles.toggle} ${toggle ? styles.open : ''}`}>
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <Settings open={toggle}/>
-        </>
-    )
+  return (
+    <>
+      <div
+        onClick={() => setToggle((prev) => !prev)}
+        className={`${styles.toggle} ${toggle ? styles.open : ""}`}
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div>
+        <Settings open={toggle} />
+      </div>
+    </>
+  );
 }

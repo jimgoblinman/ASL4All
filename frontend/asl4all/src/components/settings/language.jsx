@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from 'react';
 import Translation from "../../languages.json";
+import styles from "./language.module.css"
 
 export default function Language() {
     const [language, setLanguage] = useState("english");
@@ -19,7 +20,7 @@ export default function Language() {
 
     return (
         <>
-            <select value={language} onChange={(e) => { setLanguage(e.target.value) }} id="language">
+            <select className={styles.language} value={language} onChange={(e) => { setLanguage(e.target.value) }} id="language">
                 <option value="english">English</option>
                 <option value="german">German</option>
                 <option value="french">French</option>

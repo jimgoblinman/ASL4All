@@ -1,40 +1,49 @@
 .toggle {
-    z-index: 90;
-    position: fixed;
-    left: 2rem;
-    top: 2rem;
+  z-index: 90;
+  position: fixed;
+  left: 2rem;
+  top: 2rem;
 
-    height: 3rem;
-    width: 3rem;
-    transition: 0.5s ease;
+  height: 3rem;
+  width: 3rem;
+  transition: 0.5s ease;
 }
 
 .toggle > span {
-    position: absolute;
-    
-    top: 50%;
+  height: 100%;
+  position: absolute;
 
-    height: 0.2rem;
-    width: 100%;
+  top: 50%;
 
-    border-radius: 100vh;
-    background: white;
+  height: 0.2rem;
+  width: 100%;
 
-    transform: translateY(-50%);
-    transition: 0.5s ease;
+  border-radius: 100vh;
+  background: white;
+
+  transform: translateY(-50%);
+  transition: 0.5s ease;
 }
 
-.toggle > span:first-child { transform: translateY(-1rem); }
-.toggle > span:last-child { transform: translateY(1rem); }
+.toggle > span:first-child {
+  transform: translateY(-1rem);
+}
+.toggle > span:last-child {
+  transform: translateY(1rem);
+}
 
 .open > span:first-child {
-    transform: translateY(0);
-    rotate: 45deg;
+  transform: translateY(0);
+  rotate: 45deg;
 }
-.open > span:nth-child(2) { opacity: 0; }
+.open > span:nth-child(2) {
+  opacity: 0;
+}
 .open > span:last-child {
-    transform: translateY(0);
-    rotate: -45deg;
+  transform: translateY(0);
+  rotate: -45deg;
 }
 
-.open { transform: translateX(calc(100svw - 7rem)); }
+.open {
+  transform: translateX(calc(100svw - 7rem));
+}

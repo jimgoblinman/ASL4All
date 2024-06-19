@@ -56,7 +56,7 @@ button
     align-items: center;
     justify-content: center;
     gap: 1vw;
-    font-size: 2rem;
+    font-size: 4vw;
     color: white;
 }
 
@@ -72,5 +72,5 @@ button
 {
     display: flex;
     flex-direction: column;
-    gap: 2.5vw;
+    gap: 1.5vw;
 }
