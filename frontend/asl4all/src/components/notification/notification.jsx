@@ -1,23 +1,23 @@
-import React from "react";
-import {
-  NotificationContainer,
-  NotificationManager,
-} from "react-notifications";
-import "react-notifications/lib/notifications.css";
+import { useEffect } from 'react'
 
-const InfoNotificationComponent = () => {
-  const createInfoNotification = () => {
-    NotificationManager.info("Info message");
-  };
+import options from '../../assets/options.json'
+
+import styles from './notification.module.css'
+
+export default function Notification() {
+  useEffect(()=> {
+    const notify = () => {
+      console.log(options.start)
+      if (options.start) { return }
+      console.log('notify')
+    }
+
+    notify()
+  }, [])
 
   return (
-    <div>
-      <button className="btn btn-info" onClick={createInfoNotification}>
-        Info
-      </button>
-      <NotificationContainer />
-    </div>
-  );
-};
+    <div className={styles.wrapper}>
 
-export default InfoNotificationComponent;
+    </div>
+  )
+}

@@ -7,6 +7,7 @@ import model from "../models/gesture_recognizer.task";
 import { MdOutlineCameraswitch } from "react-icons/md";
 import Webcam from "react-webcam";
 import { FaRegTrashAlt } from "react-icons/fa";
+import Notification from '../components/notification/notification.jsx'
 
 import { Header } from "../components/header/header.jsx";
 import Swiper from "../components/swiper/swiper.jsx";
@@ -111,6 +112,7 @@ const MainComponent = () => {
         <Loading />
       ) : (
         <div className={styles.wrapper}>
+          <Notification />
           <Menu />
           <Swiper setLoading={setLoading} />
           <Header />
