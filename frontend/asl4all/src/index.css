@@ -5,6 +5,7 @@
 @tailwind utilities;
 
 * {
+    --text-size: 2rem;
     --font: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
@@ -13,6 +14,7 @@ body {
     font-family: 'Inter', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    color: white;
 }
 
 code {
