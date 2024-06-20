@@ -8,6 +8,8 @@ import { GestureRecognizer, FilesetResolver } from "@mediapipe/tasks-vision";
 import { FaQuestion } from "react-icons/fa";
 import styles from "./training.module.css";
 
+import Swiper from "../components/swiper/swiper.jsx";
+
 const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 function getRandomCharacter() {
@@ -56,7 +58,9 @@ export default function Training() {
           setCurrentSolution(newSolution);
           currentSolutionRef.current = newSolution;
           setCheck(true);
-          setTimeout(() => {setCheck(false)}, 500)
+          setTimeout(() => {
+            setCheck(false);
+          }, 500);
           break;
 
         default:
@@ -131,6 +135,7 @@ export default function Training() {
       ) : (
         <div className={styles.wrapper}>
           <Menu />
+          <Swiper setLoading={setLoading} />
           <Webcam
             ref={cameraRef}
             videoConstraints={{ facingMode: facingMode }}
@@ -142,14 +147,18 @@ export default function Training() {
             onClick={toggleFacingMode}
             className={styles.switchButton}
           />
-          <div className={`${styles.textBox} ${check ? styles.check : ''}`}>
-            <div className={`${styles.question} ${showSolution ? '' : styles.closed}`}>
-              <image src={`/ASL4All/solution/${currentSolution}.png`}/>
+          <div className={`${styles.textBox} ${check ? styles.check : ""}`}>
+            <div
+              className={`${styles.question} ${
+                showSolution ? "" : styles.closed
+              }`}
+            >
+              <image src={`/ASL4All/solution/${currentSolution}.png`} />
             </div>
             <FaQuestion
               className="absolute top-0 left-0 m-3"
               onClick={() => {
-                setShowSolution(prev => !prev);
+                setShowSolution((prev) => !prev);
               }}
             />
             <div className="absolute top-0 right-4 m-2">{currentLetter}</div>
