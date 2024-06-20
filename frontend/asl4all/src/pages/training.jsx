@@ -1,13 +1,10 @@
 import { useState, useEffect, useRef } from "react";
-
 import Loading from "../components/loading.jsx";
 import Webcam from "react-webcam";
 import { Menu } from "../components/components";
 import model from "../models/gesture_recognizer.task";
-
 import { MdOutlineCameraswitch } from "react-icons/md";
 import { GestureRecognizer, FilesetResolver } from "@mediapipe/tasks-vision";
-
 import styles from "./training.module.css";
 
 const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -20,19 +17,17 @@ export default function Training() {
   const [loading, setLoading] = useState(true);
   const [gestureRecognizer, setGestureRecognizer] = useState(null);
   const [facingMode, setFacingMode] = useState("user");
-
   const [currentLetter, setCurrentLetter] = useState("");
-  const [currentCharacter, setCurrentCharacter] = useState(
-    getRandomCharacter()
-  );
+  const [currentSolution, setCurrentSolution] = useState(getRandomCharacter());
 
+  const currentSolutionRef = useRef(currentSolution);
   const runningModeRef = useRef("VIDEO");
   const cameraRef = useRef(null);
 
   let count = 0,
     prev = "";
 
-  const predictWebcam = async (video) => {
+  const predictWebcam = (video) => {
     const results = gestureRecognizer.recognizeForVideo(video, Date.now());
 
     try {
@@ -45,7 +40,8 @@ export default function Training() {
       count = 0;
       prev = "";
 
-      console.log(currentLetter, currentCharacter);
+      console.log(currentSolutionRef.current, currentLetter);
+      const newSolution = getRandomCharacter();
 
       switch (currentLetter) {
         case "space":
@@ -54,8 +50,10 @@ export default function Training() {
         case "del":
           break;
 
-        case currentCharacter:
-          setCurrentCharacter(getRandomCharacter());
+        case currentSolutionRef.current:
+          console.log("Solution:", currentSolutionRef.current, currentLetter);
+          setCurrentSolution(newSolution);
+          currentSolutionRef.current = newSolution;
           break;
 
         default:
@@ -102,16 +100,27 @@ export default function Training() {
     if (!video) {
       return;
     }
-    video.addEventListener("loadeddata", () => {
+    const handleLoadedData = () => {
       if (!gestureRecognizer) {
         return;
       }
-      const vebcam = setInterval(() => {
+      const webcam = setInterval(() => {
         predictWebcam(video);
       }, 250);
-      return () => clearInterval(vebcam);
-    });
-  }, [gestureRecognizer]);
+      return () => clearInterval(webcam);
+    };
+
+    video.addEventListener("loadeddata", handleLoadedData);
+
+    // Cleanup event listener on component unmount or dependencies change
+    return () => {
+      video.removeEventListener("loadeddata", handleLoadedData);
+    };
+  }, [gestureRecognizer, loading]);
+
+  useEffect(() => {
+    currentSolutionRef.current = currentSolution;
+  }, [currentSolution]);
 
   return (
     <>
@@ -133,7 +142,7 @@ export default function Training() {
           />
           <div className={styles.textBox}>
             <div className="absolute top-0 right-4 m-2">{currentLetter}</div>
-            <p>{currentCharacter}</p>
+            <p>{currentSolution}</p>
           </div>
         </div>
       )}
