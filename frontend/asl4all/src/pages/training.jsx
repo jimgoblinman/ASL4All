@@ -5,6 +5,7 @@ import { Menu } from "../components/components";
 import model from "../models/gesture_recognizer.task";
 import { MdOutlineCameraswitch } from "react-icons/md";
 import { GestureRecognizer, FilesetResolver } from "@mediapipe/tasks-vision";
+import { FaQuestion } from "react-icons/fa";
 import styles from "./training.module.css";
 
 const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -19,6 +20,8 @@ export default function Training() {
   const [facingMode, setFacingMode] = useState("user");
   const [currentLetter, setCurrentLetter] = useState("");
   const [currentSolution, setCurrentSolution] = useState(getRandomCharacter());
+  const [showSolution, setShowSolution] = useState(false);
+  const [check, setCheck] = useState(false);
 
   const currentSolutionRef = useRef(currentSolution);
   const runningModeRef = useRef("VIDEO");
@@ -40,7 +43,6 @@ export default function Training() {
       count = 0;
       prev = "";
 
-      console.log(currentSolutionRef.current, currentLetter);
       const newSolution = getRandomCharacter();
 
       switch (currentLetter) {
@@ -51,9 +53,10 @@ export default function Training() {
           break;
 
         case currentSolutionRef.current:
-          console.log("Solution:", currentSolutionRef.current, currentLetter);
           setCurrentSolution(newSolution);
           currentSolutionRef.current = newSolution;
+          setCheck(true);
+          setTimeout(() => {setCheck(false)}, 500)
           break;
 
         default:
@@ -112,7 +115,6 @@ export default function Training() {
 
     video.addEventListener("loadeddata", handleLoadedData);
 
-    // Cleanup event listener on component unmount or dependencies change
     return () => {
       video.removeEventListener("loadeddata", handleLoadedData);
     };
@@ -140,7 +142,16 @@ export default function Training() {
             onClick={toggleFacingMode}
             className={styles.switchButton}
           />
-          <div className={styles.textBox}>
+          <div className={`${styles.textBox} ${check ? styles.check : ''}`}>
+            <div className={`${styles.question} ${showSolution ? '' : styles.closed}`}>
+              <image src={`/ASL4All/solution/${currentSolution}.png`}/>
+            </div>
+            <FaQuestion
+              className="absolute top-0 left-0 m-3"
+              onClick={() => {
+                setShowSolution(prev => !prev);
+              }}
+            />
             <div className="absolute top-0 right-4 m-2">{currentLetter}</div>
             <p>{currentSolution}</p>
           </div>
