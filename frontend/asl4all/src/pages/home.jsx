@@ -8,8 +8,8 @@ import { MdOutlineCameraswitch } from "react-icons/md";
 import Webcam from "react-webcam";
 import { FaRegTrashAlt } from "react-icons/fa";
 
-import {Header} from "../components/header/header.jsx"
-import Swiper from "../components/swiper/swiper.jsx"
+import { Header } from "../components/header/header.jsx";
+import Swiper from "../components/swiper/swiper.jsx";
 
 const MainComponent = () => {
   const [loading, setLoading] = useState(true);
@@ -23,42 +23,40 @@ const MainComponent = () => {
   const runningModeRef = useRef("VIDEO");
   let count, prev;
 
-  const predictWebcam = async (video) => {
-    const results = gestureRecognizer.recognizeForVideo(video, Date.now())
+  const predictWebcam = (video) => {
+    const results = gestureRecognizer.recognizeForVideo(video, Date.now());
 
     try {
-      const currentLetter = results.gestures[0][0].categoryName
-      setCurrentLetter(currentLetter)
+      const currentLetter = results.gestures[0][0].categoryName;
+      setCurrentLetter(currentLetter);
 
-      currentLetter === prev
-        ? count += 1
-        : prev = currentLetter
+      currentLetter === prev ? (count += 1) : (prev = currentLetter);
 
-      if (count < 4) return null
-      count = 0
-      prev = ''
-      
+      if (count < 4) return null;
+      count = 0;
+      prev = "";
+
       switch (currentLetter) {
-        case 'space':
-          setCurrentSentence(p => p + ' ')
+        case "space":
+          setCurrentSentence((p) => p + " ");
           break;
-        
-        case 'del':
-          setCurrentSentence(p => {
-            if (p.length > 0) return p.slice(0, -1)
-            return p
-          })
+
+        case "del":
+          setCurrentSentence((p) => {
+            if (p.length > 0) return p.slice(0, -1);
+            return p;
+          });
           break;
 
         default:
-          setCurrentSentence(p => p + currentLetter)
+          setCurrentSentence((p) => p + currentLetter);
       }
-      
-      return null
+
+      return null;
     } catch (err) {
-      setCurrentLetter("")
+      setCurrentLetter("");
     }
-  }
+  };
 
   const toggleFacingMode = () => {
     setLoading(true);
@@ -69,36 +67,42 @@ const MainComponent = () => {
   useEffect(() => {
     const createGestureRecognizer = async () => {
       const vision = await FilesetResolver.forVisionTasks(
-        'https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.3/wasm'
-      )
+        "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.3/wasm"
+      );
 
       const recognizer = await GestureRecognizer.createFromOptions(vision, {
         baseOptions: {
           modelAssetPath: model,
-          delegate: 'CPU',
+          delegate: "CPU",
         },
         runningMode: runningModeRef.current,
-      })
-      setGestureRecognizer(recognizer)
-      setLoading(false)
-  }
+      });
+      setGestureRecognizer(recognizer);
+      setLoading(false);
+    };
 
-  createGestureRecognizer()
+    createGestureRecognizer();
   }, [facingMode]);
 
   useEffect(() => {
-    if (loading || !gestureRecognizer) { return }
+    if (loading || !gestureRecognizer) {
+      return;
+    }
 
-    const video = cameraRef.current.video
+    const video = cameraRef.current.video;
 
-    if (!video) { return }
-    video.addEventListener('loadeddata', () => {
-      if (!gestureRecognizer) { return }
+    if (!video) {
+      return;
+    }
+    video.addEventListener("loadeddata", () => {
+      if (!gestureRecognizer) {
+        return;
+      }
       const vebcam = setInterval(() => {
-        predictWebcam(video)
-      }, 250)
-      return () => clearInterval(vebcam)
-    })
+        predictWebcam(video);
+      }, 250);
+      return () => clearInterval(vebcam);
+    });
   }, [gestureRecognizer]);
 
   return (
@@ -106,33 +110,33 @@ const MainComponent = () => {
       {loading ? (
         <Loading />
       ) : (
-        <>
-          <div className={styles.wrapper}>
-            <Menu />
-            <Swiper />
-            <Header/>
-            <Webcam
-              ref={cameraRef}
-              videoConstraints={{ facingMode: facingMode }}
-              className="h-full w-full object-cover object-center"
+        <div className={styles.wrapper}>
+          <Menu />
+          <Swiper setLoading={setLoading} />
+          <Header />
+          <Webcam
+            ref={cameraRef}
+            videoConstraints={{ facingMode: facingMode }}
+            className="h-full w-full object-cover object-center"
+          />
+          <MdOutlineCameraswitch
+            size={81}
+            color="white"
+            onClick={toggleFacingMode}
+            className={styles.switchButton}
+          />
+          <div className={styles.text_box}>
+            <FaRegTrashAlt
+              className="absolute top-0 left-0 m-3 "
+              onClick={() => {
+                setCurrentSentence("");
+              }}
             />
-            <MdOutlineCameraswitch
-              size={81}
-              color="white"
-              onClick={toggleFacingMode}
-              className={styles.switchButton}
-            />
-            <div className={styles.text_box}>
-              <FaRegTrashAlt
-                className="absolute top-0 left-0 m-3 "
-                onClick={() => { setCurrentSentence("") }}
-              />
-              <div className="absolute top-0 right-4 m-2">{currentLetter}</div>
+            <div className="absolute top-0 right-4 m-2">{currentLetter}</div>
 
-              <p className="current_sentence">{currentSentence}</p>
-            </div>
+            <p className="current_sentence">{currentSentence}</p>
           </div>
-        </>
+        </div>
       )}
     </>
   );
