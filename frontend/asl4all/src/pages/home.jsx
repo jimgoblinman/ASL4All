@@ -9,6 +9,7 @@ import Webcam from "react-webcam";
 import { FaRegTrashAlt } from "react-icons/fa";
 
 import {Header} from "../components/header/header.jsx"
+import {Swiper} from "../components/swiper/swiper.jsx"
 
 const MainComponent = () => {
   const [loading, setLoading] = useState(true);
@@ -108,6 +109,7 @@ const MainComponent = () => {
         <>
           <div className={styles.wrapper}>
             <Menu />
+            <Swiper/>
             <Header/>
             <Webcam
               ref={cameraRef}

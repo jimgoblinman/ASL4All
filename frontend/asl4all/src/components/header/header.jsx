@@ -6,7 +6,6 @@ export function Header() {
   return (
     <>
     <div className={styles.Header} >
-tES
     </div>
     </>
   );
