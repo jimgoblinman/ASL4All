@@ -8,6 +8,8 @@ import { MdOutlineCameraswitch } from "react-icons/md";
 import Webcam from "react-webcam";
 import { FaRegTrashAlt } from "react-icons/fa";
 
+import {Header} from "../components/header/header.jsx"
+
 const MainComponent = () => {
   const [loading, setLoading] = useState(true);
   const [gestureRecognizer, setGestureRecognizer] = useState(null);
@@ -106,6 +108,7 @@ const MainComponent = () => {
         <>
           <div className={styles.wrapper}>
             <Menu />
+            <Header/>
             <Webcam
               ref={cameraRef}
               videoConstraints={{ facingMode: facingMode }}
