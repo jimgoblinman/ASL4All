@@ -53,10 +53,13 @@ export default function Training() {
           break;
 
         case currentSolutionRef.current:
-          setCurrentSolution(newSolution);
-          currentSolutionRef.current = newSolution;
+          setShowSolution(false)
           setCheck(true);
-          setTimeout(() => {setCheck(false)}, 500)
+          setTimeout(() => {
+            setCheck(false)
+            setCurrentSolution(newSolution);
+            currentSolutionRef.current = newSolution;
+          }, 500)
           break;
 
         default:
@@ -144,7 +147,7 @@ export default function Training() {
           />
           <div className={`${styles.textBox} ${check ? styles.check : ''}`}>
             <div className={`${styles.question} ${showSolution ? '' : styles.closed}`}>
-              <image src={`/ASL4All/solution/${currentSolution}.png`}/>
+              <img src={`/ASL4All/solution/${currentSolution}.png`}/>
             </div>
             <FaQuestion
               className="absolute top-0 left-0 m-3"

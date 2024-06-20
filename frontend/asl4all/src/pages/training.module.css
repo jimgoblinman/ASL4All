@@ -39,29 +39,37 @@
 .textBox > p {
     padding-top: 2rem;
 
-    font-size: var(--text-size);
+    font-size: 2.5em;
     margin: 0; 
     word-wrap: break-word; 
     text-align: center; 
+}
+
+.closed {
+    opacity: 0 !important;
+    transform: scale(.5) !important;
 }
 
 .question {
     z-index: 99;
     position: absolute;
     top: 0.75rem;
-    left: 0.75rem;
+    left: 50%;
 
-    width: 6rem;
+    width: 18rem;
     aspect-ratio: 15/18;
     
-    transform: translate(calc(-50% + 1rem), calc(-100% - 1rem));
+    opacity: 1;
+    transform: scale(1);
+    translate: -50% calc(-100% - 1rem);
+
+    transition: 0.5s;
 }
 
-.question > image {
-    z-index: 999;
-    position: relative;
+.question > img {
     display: block;
-    width: 6rem;
+
+    width: 18rem;
     aspect-ratio: 15/18;
 }
 
