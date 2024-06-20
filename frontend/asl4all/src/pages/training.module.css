@@ -44,3 +44,12 @@
     word-wrap: break-word; 
     text-align: center; 
 }
+
+.check {
+    animation: checked 0.5s;
+}
+@keyframes checked {
+    0% { background: rgba(0, 0, 0, 0.5); }
+    50% { background: rgba(0, 255, 0, 0.5); }
+    100% { background: rgba(0, 0, 0, 0.5); }
+}
