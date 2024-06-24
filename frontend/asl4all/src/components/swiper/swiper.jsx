@@ -11,7 +11,7 @@ export default function SwipeComponent({ setLoading }) {
 
   const handlers = useSwipeable({
     onSwipedLeft: () => {
-      if (location.pathname === "/ASL4All") {
+      if (location.pathname === "/asl4all/") {
         setLoading(true);
         navigate("/training");
       }
@@ -19,7 +19,7 @@ export default function SwipeComponent({ setLoading }) {
     onSwipedRight: () => {
       if (location.pathname === "/training") {
         setLoading(true);
-        navigate("/ASL4All");
+        navigate("/asl4all/");
       }
     },
     preventDefaultTouchmoveEvent: true,

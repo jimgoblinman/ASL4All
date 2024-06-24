@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { Block, Dropdown } from "../components";
 import {
   Font,
@@ -87,15 +86,18 @@ export default function Settings({ open }) {
       </div>
       <Block
         content={[
-          <Link
+          <a
             key="feedback"
-            to="/ASL4All/feedback"
             className={styles.feedback}
+            href="https://forms.office.com/Pages/ResponsePage.aspx?id=cPD1PcjcXkCLhuYSWbpnjs4exZX1dMBGiK1diILs9BFUMk4xMjhWT0NYTDNCSEpDMEc2QjAwTzVaSC4u"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            {Translation[Translation.current].feedback}
-          </Link>,
+            feedback
+          </a>,
         ]}
       />
+
       <div className={styles.dontate}>
         {Translation[Translation.current].donate}
       </div>

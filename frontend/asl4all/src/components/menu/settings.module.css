@@ -1,6 +1,6 @@
 .wrapper {
   overflow-y: scroll;
-  z-index: 60;
+  z-index: 50;
   position: fixed;
   left: -100%;
 

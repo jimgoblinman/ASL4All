@@ -61,7 +61,6 @@ export default function Training() {
             setCheck(false);
             setCurrentSolution(newSolution);
             currentSolutionRef.current = newSolution;
-
           }, 500);
           break;
 
@@ -161,17 +160,16 @@ export default function Training() {
               }`}
             >
               <img src={`/ASL4All/solution/${currentSolution}.png`} />
-
             </div>
             <FaQuestion
-              className="absolute top-0 left-0 m-3"
+              className="absolute top-0 left-0 m-3 z-50"
               onClick={() => {
                 setShowSolution((prev) => !prev);
               }}
             />
 
             <FaFastForward
-              className="absolute bottom-0 left-0 m-3"
+              className="absolute bottom-0 left-0 m-3 z-50"
               onClick={() => {
                 handelSkip();
               }}
