@@ -7,7 +7,7 @@ import model from "../models/gesture_recognizer.task";
 import { MdOutlineCameraswitch } from "react-icons/md";
 import Webcam from "react-webcam";
 import { FaRegTrashAlt } from "react-icons/fa";
-import Notification from '../components/notification/notification.jsx'
+import Notification from "../components/notification/notification.jsx";
 
 import { Header } from "../components/header/header.jsx";
 import Swiper from "../components/swiper/swiper.jsx";
@@ -129,7 +129,7 @@ const MainComponent = () => {
           />
           <div className={styles.text_box}>
             <FaRegTrashAlt
-              className="absolute top-0 left-0 m-3 "
+              className="absolute top-0 left-0 m-3 z-50"
               onClick={() => {
                 setCurrentSentence("");
               }}
