@@ -8,6 +8,8 @@ import { GestureRecognizer, FilesetResolver } from "@mediapipe/tasks-vision";
 import { FaQuestion, FaFastForward } from "react-icons/fa";
 import styles from "./training.module.css";
 
+import Swiper from "../components/swiper/swiper.jsx";
+
 const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 function getRandomCharacter() {
@@ -59,6 +61,7 @@ export default function Training() {
             setCheck(false);
             setCurrentSolution(newSolution);
             currentSolutionRef.current = newSolution;
+
           }, 500);
           break;
 
@@ -139,6 +142,7 @@ export default function Training() {
       ) : (
         <div className={styles.wrapper}>
           <Menu />
+          <Swiper setLoading={setLoading} />
           <Webcam
             ref={cameraRef}
             videoConstraints={{ facingMode: facingMode }}
@@ -157,6 +161,7 @@ export default function Training() {
               }`}
             >
               <img src={`/ASL4All/solution/${currentSolution}.png`} />
+
             </div>
             <FaQuestion
               className="absolute top-0 left-0 m-3"

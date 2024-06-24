@@ -8,7 +8,8 @@ import { MdOutlineCameraswitch } from "react-icons/md";
 import Webcam from "react-webcam";
 import { FaRegTrashAlt } from "react-icons/fa";
 
-import {Header} from "../components/header/header.jsx"
+import { Header } from "../components/header/header.jsx";
+import Swiper from "../components/swiper/swiper.jsx";
 
 const MainComponent = () => {
   const [loading, setLoading] = useState(true);
@@ -22,7 +23,7 @@ const MainComponent = () => {
   const runningModeRef = useRef("VIDEO");
   let count, prev;
 
-  const predictWebcam = async (video) => {
+  const predictWebcam = (video) => {
     const results = gestureRecognizer.recognizeForVideo(video, Date.now());
 
     try {
@@ -111,7 +112,8 @@ const MainComponent = () => {
       ) : (
         <div className={styles.wrapper}>
           <Menu />
-          <Header/>
+          <Swiper setLoading={setLoading} />
+          <Header />
           <Webcam
             ref={cameraRef}
             videoConstraints={{ facingMode: facingMode }}
