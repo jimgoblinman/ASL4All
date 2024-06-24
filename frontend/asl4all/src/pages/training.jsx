@@ -5,7 +5,7 @@ import { Menu } from "../components/components";
 import model from "../models/gesture_recognizer.task";
 import { MdOutlineCameraswitch } from "react-icons/md";
 import { GestureRecognizer, FilesetResolver } from "@mediapipe/tasks-vision";
-import { FaQuestion } from "react-icons/fa";
+import { FaQuestion, FaFastForward } from "react-icons/fa";
 import styles from "./training.module.css";
 
 const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -53,13 +53,13 @@ export default function Training() {
           break;
 
         case currentSolutionRef.current:
-          setShowSolution(false)
+          setShowSolution(false);
           setCheck(true);
           setTimeout(() => {
-            setCheck(false)
+            setCheck(false);
             setCurrentSolution(newSolution);
             currentSolutionRef.current = newSolution;
-          }, 500)
+          }, 500);
           break;
 
         default:
@@ -74,6 +74,11 @@ export default function Training() {
     setLoading(true);
     setGestureRecognizer(null);
     setFacingMode(facingMode === "user" ? "environment" : "user");
+  };
+
+  const handelSkip = () => {
+    setCurrentSolution(getRandomCharacter());
+    currentSolutionRef.current = getRandomCharacter();
   };
 
   useEffect(() => {
@@ -145,14 +150,25 @@ export default function Training() {
             onClick={toggleFacingMode}
             className={styles.switchButton}
           />
-          <div className={`${styles.textBox} ${check ? styles.check : ''}`}>
-            <div className={`${styles.question} ${showSolution ? '' : styles.closed}`}>
-              <img src={`/ASL4All/solution/${currentSolution}.png`}/>
+          <div className={`${styles.textBox} ${check ? styles.check : ""}`}>
+            <div
+              className={`${styles.question} ${
+                showSolution ? "" : styles.closed
+              }`}
+            >
+              <img src={`/ASL4All/solution/${currentSolution}.png`} />
             </div>
             <FaQuestion
               className="absolute top-0 left-0 m-3"
               onClick={() => {
-                setShowSolution(prev => !prev);
+                setShowSolution((prev) => !prev);
+              }}
+            />
+
+            <FaFastForward
+              className="absolute bottom-0 left-0 m-3"
+              onClick={() => {
+                handelSkip();
               }}
             />
             <div className="absolute top-0 right-4 m-2">{currentLetter}</div>
