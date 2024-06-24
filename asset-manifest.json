@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/asl4all/static/css/main.c140e2b6.css",
-    "main.js": "/asl4all/static/js/main.86d5d91a.js",
-    "static/js/592.093f8e88.chunk.js": "/asl4all/static/js/592.093f8e88.chunk.js",
-    "static/media/gesture_recognizer.task": "/asl4all/static/media/gesture_recognizer.f6a51a184eeff3e194a3.task",
-    "static/media/loading_asl4all.gif": "/asl4all/static/media/loading_asl4all.cf5ceea89517e9b2869e.gif",
-    "index.html": "/asl4all/index.html",
-    "main.c140e2b6.css.map": "/asl4all/static/css/main.c140e2b6.css.map",
-    "main.86d5d91a.js.map": "/asl4all/static/js/main.86d5d91a.js.map",
-    "592.093f8e88.chunk.js.map": "/asl4all/static/js/592.093f8e88.chunk.js.map"
+    "main.css": "/ASL4All/static/css/main.c140e2b6.css",
+    "main.js": "/ASL4All/static/js/main.464f7d56.js",
+    "static/js/592.093f8e88.chunk.js": "/ASL4All/static/js/592.093f8e88.chunk.js",
+    "static/media/gesture_recognizer.task": "/ASL4All/static/media/gesture_recognizer.f6a51a184eeff3e194a3.task",
+    "static/media/loading_asl4all.gif": "/ASL4All/static/media/loading_asl4all.cf5ceea89517e9b2869e.gif",
+    "index.html": "/ASL4All/index.html",
+    "main.c140e2b6.css.map": "/ASL4All/static/css/main.c140e2b6.css.map",
+    "main.464f7d56.js.map": "/ASL4All/static/js/main.464f7d56.js.map",
+    "592.093f8e88.chunk.js.map": "/ASL4All/static/js/592.093f8e88.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.c140e2b6.css",
-    "static/js/main.86d5d91a.js"
+    "static/js/main.464f7d56.js"
   ]
 }
