@@ -6,16 +6,22 @@ import Feedback from './pages/feedback';
 import Training from './pages/training';
 import SwipeComponent from './components/swiper/swiper';
 
+import SettingsProvider from './components/settings/main/settingsContext.jsx'
+
 export default function App() {
   return (
     <Router>
       <SwipeComponent />
-      <Routes>
-        <Route path='/asl4all' element={<Home />} />
-        <Route path='/training' element={<Training />} />
-        <Route path='/feedback' element={<Feedback />} />
-        <Route path='/*' element={<Navigate to='/asl4all/' />} />
-      </Routes>
+      <SettingsProvider>
+        <React.StrictMode>
+        <Routes>
+          <Route path='/asl4all' element={<Home />} />
+          <Route path='/training' element={<Training />} />
+          <Route path='/feedback' element={<Feedback />} />
+          <Route path='/*' element={<Navigate to='/asl4all/' />} />
+        </Routes>
+      </React.StrictMode>
+      </SettingsProvider>
     </Router>
   );
 }
