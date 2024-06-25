@@ -4,7 +4,7 @@ import Webcam from "react-webcam";
 import model from "../models/gesture_recognizer.task";
 import { MdOutlineCameraswitch } from "react-icons/md";
 import { GestureRecognizer, FilesetResolver } from "@mediapipe/tasks-vision";
-import { FaQuestion } from "react-icons/fa";
+import { FaQuestion, FaFastForward } from "react-icons/fa";
 import styles from "./training.module.css";
 
 import Swiper from "../components/swiper/swiper.jsx";
@@ -54,11 +54,12 @@ export default function Training() {
           break;
 
         case currentSolutionRef.current:
-          setCurrentSolution(newSolution);
-          currentSolutionRef.current = newSolution;
+          setShowSolution(false);
           setCheck(true);
           setTimeout(() => {
             setCheck(false);
+            setCurrentSolution(newSolution);
+            currentSolutionRef.current = newSolution;
           }, 500);
           break;
 
@@ -74,6 +75,11 @@ export default function Training() {
     setLoading(true);
     setGestureRecognizer(null);
     setFacingMode(facingMode === "user" ? "environment" : "user");
+  };
+
+  const handelSkip = () => {
+    setCurrentSolution(getRandomCharacter());
+    currentSolutionRef.current = getRandomCharacter();
   };
 
   useEffect(() => {
@@ -151,12 +157,19 @@ export default function Training() {
                 showSolution ? "" : styles.closed
               }`}
             >
-              <image src={`/ASL4All/solution/${currentSolution}.png`} />
+              <img src={`/ASL4All/solution/${currentSolution}.png`} />
             </div>
             <FaQuestion
-              className="absolute top-0 left-0 m-3"
+              className="absolute top-0 left-0 m-3 z-50"
               onClick={() => {
                 setShowSolution((prev) => !prev);
+              }}
+            />
+
+            <FaFastForward
+              className="absolute bottom-0 left-0 m-3 z-50"
+              onClick={() => {
+                handelSkip();
               }}
             />
             <div className="absolute top-0 right-4 m-2">{currentLetter}</div>

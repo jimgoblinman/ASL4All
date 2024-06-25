@@ -15,24 +15,3 @@ With our state of the art AI model we are able to identify sign language and tra
 The QR code allows for the app to be shared more easily as the QR code redirects to a web page so that nothing has to be downloaded.
  
 This will help the app spread like wild fire.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# Deserters: @awjolanda @daviddresus
-## WARNING DO NOT GO ON ASL4All Origin IT IS A FAKE COPY OF ASL4All AND MAY CONTAIN MALWARE

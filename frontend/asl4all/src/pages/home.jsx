@@ -7,10 +7,10 @@ import { MdOutlineCameraswitch } from "react-icons/md";
 import Webcam from "react-webcam";
 import { FaRegTrashAlt } from "react-icons/fa";
 
-import { Header } from "../components/header/header.jsx";
-//import Swiper from "../components/swiper/swiper.jsx";
+import Swiper from "../components/swiper/swiper.jsx";
+import Settings from "../components/settings/main.jsx";
 
-import Settings from '../components/settings/main'
+import { Header } from "../components/header/header.jsx";
 
 const MainComponent = () => {
   const [loading, setLoading] = useState(true);
@@ -112,8 +112,8 @@ const MainComponent = () => {
         <Loading />
       ) : (
         <div className={styles.wrapper}>
+          <Swiper setLoading={setLoading} />
           <Settings />
-          {/* <Swiper setLoading={setLoading} /> */}
           <Header />
           <Webcam
             ref={cameraRef}
@@ -128,7 +128,7 @@ const MainComponent = () => {
           />
           <div className={styles.text_box}>
             <FaRegTrashAlt
-              className="absolute top-0 left-0 m-3 "
+              className="absolute top-0 left-0 m-3 z-50"
               onClick={() => {
                 setCurrentSentence("");
               }}
