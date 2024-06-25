@@ -1,12 +1,16 @@
 // App.jsx
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import Home from './pages/home';
-import Feedback from './pages/feedback';
-import Training from './pages/training';
-import SwipeComponent from './components/swiper/swiper';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import Home from "./pages/home";
+import Training from "./pages/training";
+import SwipeComponent from "./components/swiper/swiper";
 
-import SettingsProvider from './components/settings/settingsContext.jsx'
+import SettingsProvider from "./components/settings/settingsContext.jsx";
 
 export default function App() {
   return (
@@ -14,13 +18,12 @@ export default function App() {
       <SwipeComponent />
       <SettingsProvider>
         <React.StrictMode>
-        <Routes>
-          <Route path='/asl4all' element={<Home />} />
-          <Route path='/training' element={<Training />} />
-          <Route path='/feedback' element={<Feedback />} />
-          <Route path='/*' element={<Navigate to='/asl4all/' />} />
-        </Routes>
-      </React.StrictMode>
+          <Routes>
+            <Route path="/ASL4All/" element={<Home />} />
+            <Route path="/training" element={<Training />} />
+            <Route path="/*" element={<Navigate to="/ASL4All/" />} />
+          </Routes>
+        </React.StrictMode>
       </SettingsProvider>
     </Router>
   );

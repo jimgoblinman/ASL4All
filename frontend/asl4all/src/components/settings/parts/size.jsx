@@ -21,12 +21,12 @@ export default function SizePart() {
     <>
       <label>{`${settings.size}px`}</label>
       <div className={styles.slider}>
-        <span>8px</span>
+        <span>16px</span>
         <input
           type="range"
-          min="8"
+          min="16"
           max="24"
-          step="4"
+          step="2"
           value={settings.size}
           onChange={(e) => updateSettings({ size: e.target.value })}
         />

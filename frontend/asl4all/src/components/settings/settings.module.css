@@ -3,7 +3,7 @@
 }
 
 .toggle {
-  z-index: 999;
+  z-index: 900;
   position: fixed;
   left: 32px;
   top: 32px;
@@ -18,12 +18,11 @@
 }
 
 .toggle > span {
-  height: 100%;
   position: absolute;
   top: 50%;
   left: 8px;
 
-  height: 0.32px;
+  height: 1px;
   width: 48px;
 
   border-radius: 100vh;
