@@ -3,7 +3,6 @@
   width: 100svw;
 
   background-color: black;
-  font-size: var(--text-size);
 }
 
 .media {
@@ -15,34 +14,33 @@
 }
 
 .text_box {
-  z-index: 40;
+  z-index: 750;
   position: fixed;
+  left: 0;
   bottom: 0;
 
-  display: inline-block; /* Allows the box to adjust size based on content */
-  padding: 1rem; /* Adds padding to ensure space within the box */
+  display: inline-block;
+  padding: 1rem;
+  margin: 2rem;
 
   min-height: 25%;
   max-height: 60%;
   width: calc(100% - 4rem);
 
-  margin: 2rem;
-
-  user-select: none;
-
-  /* From https://css.glass */
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, calc(var(--opacity) / 100));
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(11.4px);
   -webkit-backdrop-filter: blur(11.4px);
   border: 1px solid rgba(0, 0, 0, 0.15);
+  box-sizing: border-box;
+
+  user-select: none;
 }
 
 .text_box > p {
   padding-top: 2rem;
 
-  font-size: var(--text-size);
   margin: 0;
   word-wrap: break-word;
   text-align: center;
@@ -52,10 +50,24 @@
   background-color: #858585 !important;
 }
 
-.switchButton {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  padding: 10px 20px;
-  z-index: 40;
+.cam {
+  z-index: 750;
+  position: fixed;
+  right: 2rem;
+  top: 2rem;
+
+  height: 4rem;
+  width: 4rem;
+
+  border-radius: 1rem;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  transition: 0.5s;
+}
+
+.cam > svg {
+  width: calc(100% - 1rem);
+  height: calc(100% - 1rem);
+
+  padding: 0.5rem;
 }

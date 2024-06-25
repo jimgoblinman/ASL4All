@@ -1,23 +1,19 @@
-import { useEffect } from 'react'
+import { useEffect } from "react";
 
-import options from '../../assets/options.json'
+import options from "../../assets/options.json";
 
-import styles from './notification.module.css'
+import styles from "./notification.module.css";
 
 export default function Notification() {
-  useEffect(()=> {
+  useEffect(() => {
     const notify = () => {
-      console.log(options.start)
-      if (options.start) { return }
-      console.log('notify')
-    }
+      if (options.start) {
+        return;
+      }
+    };
 
-    notify()
-  }, [])
+    notify();
+  }, []);
 
-  return (
-    <div className={styles.wrapper}>
-
-    </div>
-  )
+  return <div className={styles.wrapper}></div>;
 }
