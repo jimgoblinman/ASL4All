@@ -1,0 +1,10 @@
+{
+    "start": false,
+    "settings": {
+        "font": "Arial",
+        "size": 24,
+        "color": "#FFFFFF",
+        "opacity": 75,
+        "recognition": 0.25
+    }
+}

@@ -1,0 +1,10 @@
+.qr {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 16px;
+    
+    border-radius: 16px;
+    background-color: white;
+}

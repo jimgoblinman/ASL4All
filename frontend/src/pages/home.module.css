@@ -1,0 +1,73 @@
+.wrapper {
+  height: 100svh;
+  width: 100svw;
+
+  background-color: black;
+}
+
+.media {
+  height: 100%;
+  width: 100%;
+  background-image: url("https://cdn.pixabay.com/photo/2020/08/19/17/49/avatar-5501662_1280.png");
+  background-size: cover;
+  background-position: center;
+}
+
+.text_box {
+  z-index: 750;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+
+  display: inline-block;
+  padding: 16px;
+  margin: 32px;
+
+  min-height: 25%;
+  max-height: 60%;
+  width: calc(100% - 64px);
+
+  background: rgba(0, 0, 0, calc(var(--opacity) / 100));
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(11.4px);
+  -webkit-backdrop-filter: blur(11.4px);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  box-sizing: border-box;
+
+  user-select: none;
+}
+
+.text_box > p {
+  padding-top: 32px;
+
+  margin: 0;
+  word-wrap: break-word;
+  text-align: center;
+}
+
+.active {
+  background-color: #858585 !important;
+}
+
+.cam {
+  z-index: 750;
+  position: fixed;
+  right: 32px;
+  top: 32px;
+
+  height: 64px;
+  width: 64px;
+
+  border-radius: 16px;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  transition: 0.5s;
+}
+
+.cam > svg {
+  width: calc(100% - 16px);
+  height: calc(100% - 16px);
+
+  padding: 8px
+}

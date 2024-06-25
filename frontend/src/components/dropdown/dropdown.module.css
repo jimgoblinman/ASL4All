@@ -1,0 +1,26 @@
+.wrapper {
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 8px
+}
+
+.content {
+  margin: 0 8px 0 8px;
+  max-height: 0;
+  overflow: hidden;
+  transition: 0.2s;
+}
+
+.open > .content {
+  margin: 0 8px 0 8px;
+  max-height: 100svh;
+  transition: 0.2s 0.2s;
+}
