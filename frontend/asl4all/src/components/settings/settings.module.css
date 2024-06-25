@@ -5,13 +5,13 @@
 .toggle {
   z-index: 999;
   position: fixed;
-  left: 2rem;
-  top: 2rem;
+  left: 32px;
+  top: 32px;
 
-  height: 4rem;
-  width: 4rem;
+  height: 64px;
+  width: 64px;
 
-  border-radius: 1rem;
+  border-radius: 16px;
   background-color: rgba(0, 0, 0, 0.5);
 
   transition: 0.5s;
@@ -21,10 +21,10 @@
   height: 100%;
   position: absolute;
   top: 50%;
-  left: 0.5rem;
+  left: 8px;
 
-  height: 0.2rem;
-  width: 3rem;
+  height: 0.32px;
+  width: 48px;
 
   border-radius: 100vh;
   background: white;
@@ -34,10 +34,10 @@
 }
 
 .toggle > span:first-child {
-  transform: translateY(-1rem);
+  transform: translateY(-16px);
 }
 .toggle > span:last-child {
-  transform: translateY(1rem);
+  transform: translateY(16px);
 }
 
 .open > span:first-child {
@@ -54,7 +54,7 @@
 
 .open {
   background-color: rgba(0, 0, 0, 0);
-  transform: translateX(calc(100svw - 7rem));
+  transform: translateX(calc(100svw - 112px));
 }
 
 .settings {
@@ -100,7 +100,7 @@
 
 .settings h1 {
   overflow: hidden;
-  margin: 2.5rem;
+  margin: 40px;
 }
 
 .settings > div > div {

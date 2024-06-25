@@ -9,20 +9,20 @@
     justify-content: center;
     align-items: center;
 
-    padding: 1rem;
-    margin: 1rem;
+    padding: 16px;
+    margin: 16px;
     
     width: 75%;
 
-    border-radius: 1rem;
+    border-radius: 16px;
     background-color: #F5F7F9;
     color: black;
     
-    transform: translate(calc(-50% - 1rem), calc(-100% - 1rem));
+    transform: translate(calc(-50% - 16px), calc(-100% - 16px));
     animation: out 2s;
 }
 @keyframes out {
-    0% { transform: translate(calc(-50% - 1rem), 0); }
-    75% { transform: translate(calc(-50% - 1rem), 0); }
-    100% { transform: translate(calc(-50% - 1rem), calc(-100% - 1rem)); }
+    0% { transform: translate(calc(-50% - 16px), 0); }
+    75% { transform: translate(calc(-50% - 16px), 0); }
+    100% { transform: translate(calc(-50% - 16px), calc(-100% - 16px)); }
 }

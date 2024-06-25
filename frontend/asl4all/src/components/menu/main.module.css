@@ -1,11 +1,11 @@
 .toggle {
   z-index: 60;
   position: fixed;
-  left: 2rem;
-  top: 2rem;
+  left: 32px;
+  top: 32px;
 
-  height: 3rem;
-  width: 3rem;
+  height: 48px;
+  width: 48px;
   transition: 0.5s ease;
 }
 
@@ -15,7 +15,7 @@
 
   top: 50%;
 
-  height: 0.2rem;
+  height: 0.32px;
   width: 100%;
 
   border-radius: 100vh;
@@ -26,10 +26,10 @@
 }
 
 .toggle > span:first-child {
-  transform: translateY(-1rem);
+  transform: translateY(-16px);
 }
 .toggle > span:last-child {
-  transform: translateY(1rem);
+  transform: translateY(16px);
 }
 
 .open > span:first-child {
@@ -45,5 +45,5 @@
 }
 
 .open {
-  transform: translateX(calc(100svw - 7rem));
+  transform: translateX(calc(100svw - 112px));
 }

@@ -9,10 +9,10 @@ body {
 
 form {
   background: rgba(0, 0, 0, 0.5);
-  margin-left: 1.5rem;
-  margin-right: 1.5rem;
-  padding: 1rem;
-  border-radius: 1rem;
+  margin-left: 24px;
+  margin-right: 24px;
+  padding: 16px;
+  border-radius: 16px;
   width: 100%;
 }
 

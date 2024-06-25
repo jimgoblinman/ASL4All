@@ -9,18 +9,18 @@
   justify-content: space-between;
   align-items: center;
 
-  padding: 0.5rem;
+  padding: 8px
 }
 
 .content {
-  margin: 0 0.5rem 0 0.5rem;
+  margin: 0 8px 0 8px;
   max-height: 0;
   overflow: hidden;
   transition: 0.2s;
 }
 
 .open > .content {
-  margin: 0 0.5rem 0 0.5rem;
+  margin: 0 8px 0 8px;
   max-height: 100svh;
   transition: 0.2s 0.2s;
 }

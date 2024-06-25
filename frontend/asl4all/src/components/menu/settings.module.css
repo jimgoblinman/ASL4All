@@ -26,13 +26,13 @@
 }
 
 .wrapper > h1 {
-  margin: 5rem auto 0 auto;
+  margin: 80px auto 0 auto;
 
-  font-size: 4rem;
+  font-size: 64px;
 }
 
 .settings {
-  padding: 1rem;
+  padding: 16px;
   height: 100%;
   /* overflow-y: scroll;*/
   flex-grow: 1;
@@ -44,10 +44,10 @@
 }
 
 .dontate {
-  margin: 2rem;
-  padding: 1rem;
+  margin: 32px;
+  padding: 16px;
 
-  border-radius: 1rem;
+  border-radius: 16px;
   background: rgba(255, 255, 255, 0.75);
   color: black;
 

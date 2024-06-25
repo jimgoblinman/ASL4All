@@ -20,12 +20,12 @@
   bottom: 0;
 
   display: inline-block;
-  padding: 1rem;
-  margin: 2rem;
+  padding: 16px;
+  margin: 32px;
 
   min-height: 25%;
   max-height: 60%;
-  width: calc(100% - 4rem);
+  width: calc(100% - 64px);
 
   background: rgba(0, 0, 0, calc(var(--opacity) / 100));
   border-radius: 16px;
@@ -39,7 +39,7 @@
 }
 
 .text_box > p {
-  padding-top: 2rem;
+  padding-top: 32px;
 
   margin: 0;
   word-wrap: break-word;
@@ -53,21 +53,21 @@
 .cam {
   z-index: 750;
   position: fixed;
-  right: 2rem;
-  top: 2rem;
+  right: 32px;
+  top: 32px;
 
-  height: 4rem;
-  width: 4rem;
+  height: 64px;
+  width: 64px;
 
-  border-radius: 1rem;
+  border-radius: 16px;
   background-color: rgba(0, 0, 0, 0.5);
 
   transition: 0.5s;
 }
 
 .cam > svg {
-  width: calc(100% - 1rem);
-  height: calc(100% - 1rem);
+  width: calc(100% - 16px);
+  height: calc(100% - 16px);
 
-  padding: 0.5rem;
+  padding: 8px
 }
