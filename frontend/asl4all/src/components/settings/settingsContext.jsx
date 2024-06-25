@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types'
+
 import { createContext, useContext, useState, useEffect } from 'react'
 import { saveSettings as saveLocaly, loadSettings as loadLocaly } from './storage'
 
-import Popup from '../../popup/main'
+import Popup from '../popup/main'
 
 const SettingsContext = createContext()
 
@@ -14,13 +15,6 @@ export default function SettingsProvider({ children }) {
     useEffect(() => {
         saveLocaly(settings)
     }, [settings])
-    
-    useEffect(() => {
-        if (settings.start) return
-        const newSettings = settings
-        newSettings.start = true
-        saveLocaly(newSettings)
-    }, [])
 
     const popup = [
         'To open training, swipe right.',
@@ -29,12 +23,12 @@ export default function SettingsProvider({ children }) {
 
     return (
         <SettingsContext.Provider value={{ settings, setSettings }}>
-            { !settings.start ? <Popup message={popup} /> : '' }
+            { settings.start ? <Popup message={popup} /> : '' }
             { children }
         </SettingsContext.Provider>
     )
 }
 
 SettingsProvider.propTypes = {
-    children: PropTypes.node.isRequired
+    children: PropTypes.any.isRequired,
 }

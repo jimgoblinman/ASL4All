@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import Loading from "../components/loading.jsx";
 import Webcam from "react-webcam";
-import { Menu } from "../components/components";
 import model from "../models/gesture_recognizer.task";
 import { MdOutlineCameraswitch } from "react-icons/md";
 import { GestureRecognizer, FilesetResolver } from "@mediapipe/tasks-vision";
@@ -134,7 +133,6 @@ export default function Training() {
         <Loading />
       ) : (
         <div className={styles.wrapper}>
-          <Menu />
           <Swiper setLoading={setLoading} />
           <Webcam
             ref={cameraRef}

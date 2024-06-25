@@ -1,5 +1,7 @@
-import React, { useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import QRCode from 'qrcode-generator'
+
+import styles from './qr.module.css'
 
 export default function QR() {
     const qrCodeRef = useRef(null)
@@ -21,8 +23,8 @@ export default function QR() {
     }, [])
 
     return (
-        <div className='p-4 flex justify-center items-center bg-white rounded-lg'>
-            <img ref={qrCodeRef} alt="QR Code" />
+        <div className={styles.qr}>
+            <img ref={qrCodeRef} alt='QR Code' />
         </div>
     )
 }

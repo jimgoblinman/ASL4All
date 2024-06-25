@@ -1,0 +1,26 @@
+.select {
+    text-align: center;
+    height: 2rem;
+    width: 50svw;
+    margin: 1rem;
+}
+
+.fontArial {
+    font-family: 'Arial', sans-serif;
+}
+
+.fontCalibri {
+    font-family: 'Calibri', sans-serif;
+}
+
+.fontGillSansMt {
+    font-family: 'Gill Sans MS', sans-serif;
+}
+
+.fontConsolas {
+    font-family: 'Consolas', sans-serif;
+}   
+
+.fontInter {
+    font-family: 'Inter', sans-serif;
+}

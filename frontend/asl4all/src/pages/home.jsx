@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Menu } from "../components/components";
 import styles from "./home.module.css";
 import Loading from "../components/loading.jsx";
 import { GestureRecognizer, FilesetResolver } from "@mediapipe/tasks-vision";
@@ -9,7 +8,9 @@ import Webcam from "react-webcam";
 import { FaRegTrashAlt } from "react-icons/fa";
 
 import { Header } from "../components/header/header.jsx";
-import Swiper from "../components/swiper/swiper.jsx";
+//import Swiper from "../components/swiper/swiper.jsx";
+
+import Settings from '../components/settings/main'
 
 const MainComponent = () => {
   const [loading, setLoading] = useState(true);
@@ -111,8 +112,8 @@ const MainComponent = () => {
         <Loading />
       ) : (
         <div className={styles.wrapper}>
-          <Menu />
-          <Swiper setLoading={setLoading} />
+          <Settings />
+          {/* <Swiper setLoading={setLoading} /> */}
           <Header />
           <Webcam
             ref={cameraRef}

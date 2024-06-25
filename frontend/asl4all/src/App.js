@@ -6,7 +6,7 @@ import Feedback from './pages/feedback';
 import Training from './pages/training';
 import SwipeComponent from './components/swiper/swiper';
 
-import SettingsProvider from './components/settings/main/settingsContext.jsx'
+import SettingsProvider from './components/settings/settingsContext.jsx'
 
 export default function App() {
   return (

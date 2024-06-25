@@ -1,8 +1,16 @@
+import { useEffect } from 'react'
+import { useSettings } from '../settings/settingsContext'
 import PropTypes from 'prop-types'
 
 import styles from './popup.module.css'
 
 export default function Popup({ message }) {
+    const { setSettings } = useSettings()
+
+    useEffect(() => {
+        setTimeout(() => setSettings(prev => ({ ...prev, ...{ start: false } })), 2000)
+    }, [])
+
     return (
         <div className={styles.wrapper}>
             { message.map((e, i) => {
@@ -13,5 +21,5 @@ export default function Popup({ message }) {
 }
 
 Popup.propTypes = {
-    message: PropTypes.string.isRequired
+    message: PropTypes.any.isRequired,
 }
