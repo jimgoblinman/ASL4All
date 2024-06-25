@@ -163,6 +163,7 @@ export default function Training() {
             >
               <img src={`/ASL4All/solution/${currentSolution}.png`} />
             </div>
+
             <FaQuestion
               onClick={() => {
                 setShowSolution((prev) => !prev);

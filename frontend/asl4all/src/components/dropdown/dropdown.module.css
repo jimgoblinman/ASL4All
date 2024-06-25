@@ -1,26 +1,26 @@
 .wrapper {
-    height: 100%;
-    position: relative;
-    overflow: hidden;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
 }
 
 .top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
-    padding: 0.5rem;
+  padding: 0.5rem;
 }
 
 .content {
-    margin: 0 0.5rem 0 0.5rem;
-    max-height: 0;
-    overflow: hidden;
-    transition: 1s;
+  margin: 0 0.5rem 0 0.5rem;
+  max-height: 0;
+  overflow: hidden;
+  transition: 0.2s;
 }
 
 .open > .content {
-    margin: 0 0.5rem 0 0.5rem;
-    max-height: 100svh;
-    transition: 1s 1s;
+  margin: 0 0.5rem 0 0.5rem;
+  max-height: 100svh;
+  transition: 0.2s 0.2s;
 }
