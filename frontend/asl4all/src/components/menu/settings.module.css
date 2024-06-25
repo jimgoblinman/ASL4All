@@ -41,7 +41,6 @@
 .feedback {
   display: flex;
   justify-content: center;
-  font-size: var(--text-size);
 }
 
 .dontate {
@@ -52,7 +51,6 @@
   background: rgba(255, 255, 255, 0.75);
   color: black;
 
-  font-size: var(--text-size);
   font-weight: 500;
 
   text-align: center;
