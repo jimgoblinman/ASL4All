@@ -1,6 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "ASL4All",
+  "name": "ASL4All - Inclusivity through Sign Language",
+  "description": "The best program to ever exist. We offer everyone the possibility to understand sign language and be able to speak with a vast community.",
   "icons": [
     {
       "src": "favicon.ico",
