@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Menu } from "../components/components";
 import styles from "./home.module.css";
 import Loading from "../components/loading.jsx";
 import { GestureRecognizer, FilesetResolver } from "@mediapipe/tasks-vision";
@@ -7,10 +6,10 @@ import model from "../models/gesture_recognizer.task";
 import { MdOutlineCameraswitch } from "react-icons/md";
 import Webcam from "react-webcam";
 import { FaRegTrashAlt } from "react-icons/fa";
-import Notification from "../components/notification/notification.jsx";
+import { useSettings } from "../components/settings/settingsContext.jsx";
 
-import { Header } from "../components/header/header.jsx";
 import Swiper from "../components/swiper/swiper.jsx";
+import Settings from "../components/settings/main.jsx";
 
 const MainComponent = () => {
   const [loading, setLoading] = useState(true);
@@ -19,6 +18,8 @@ const MainComponent = () => {
 
   const [currentLetter, setCurrentLetter] = useState("");
   const [currentSentence, setCurrentSentence] = useState("");
+
+  const { settings } = useSettings();
 
   const cameraRef = useRef(null);
   const runningModeRef = useRef("VIDEO");
@@ -33,7 +34,7 @@ const MainComponent = () => {
 
       currentLetter === prev ? (count += 1) : (prev = currentLetter);
 
-      if (count < 4) return null;
+      if (count < settings.reco * 4) return null;
       count = 0;
       prev = "";
 
@@ -112,21 +113,16 @@ const MainComponent = () => {
         <Loading />
       ) : (
         <div className={styles.wrapper}>
-          <Notification />
-          <Menu />
           <Swiper setLoading={setLoading} />
-          <Header />
+          <Settings />
           <Webcam
             ref={cameraRef}
             videoConstraints={{ facingMode: facingMode }}
             className="h-full w-full object-cover object-center"
           />
-          <MdOutlineCameraswitch
-            size={81}
-            color="white"
-            onClick={toggleFacingMode}
-            className={styles.switchButton}
-          />
+          <div className={styles.cam}>
+            <MdOutlineCameraswitch color="white" onClick={toggleFacingMode} />
+          </div>
           <div className={styles.text_box}>
             <FaRegTrashAlt
               className="absolute top-0 left-0 m-3 z-50"

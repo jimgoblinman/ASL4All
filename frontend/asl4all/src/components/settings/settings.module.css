@@ -1,0 +1,115 @@
+.select {
+  width: 100%;
+}
+
+.toggle {
+  z-index: 900;
+  position: fixed;
+  left: 32px;
+  top: 32px;
+
+  height: 64px;
+  width: 64px;
+
+  border-radius: 16px;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  transition: 0.5s;
+}
+
+.toggle > span {
+  position: absolute;
+  top: 50%;
+  left: 8px;
+
+  height: 1px;
+  width: 48px;
+
+  border-radius: 100vh;
+  background: white;
+
+  transform: translateY(-50%);
+  transition: 0.5s;
+}
+
+.toggle > span:first-child {
+  transform: translateY(-16px);
+}
+.toggle > span:last-child {
+  transform: translateY(16px);
+}
+
+.open > span:first-child {
+  transform: translateY(0);
+  rotate: 45deg;
+}
+.open > span:nth-child(2) {
+  opacity: 0;
+}
+.open > span:last-child {
+  transform: translateY(0);
+  rotate: -45deg;
+}
+
+.open {
+  background-color: rgba(0, 0, 0, 0);
+  transform: translateX(calc(100svw - 112px));
+}
+
+.settings {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  overflow-y: hidden;
+
+  height: 100%;
+  width: 100%;
+
+  background-color: rgba(0, 0, 0, 0);
+
+  transition: 0.5s;
+}
+
+.settings > div {
+  z-index: 900;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  transform: translate(-100%, 0);
+  transition: 0.5s 0.25s;
+}
+
+.openS {
+  z-index: 800;
+  background-color: rgba(0, 0, 0, 1);
+}
+
+.openS > div {
+  transform: translate(0, 0);
+}
+
+.settings {
+  text-align: center;
+}
+
+.settings h1 {
+  overflow: hidden;
+  margin: 40px;
+}
+
+.settings > div > div {
+  overflow: hidden;
+}
+
+.settings > div > div:last-child {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.settings p {
+  margin: 0;
+}

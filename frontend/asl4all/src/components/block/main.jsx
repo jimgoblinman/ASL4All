@@ -1,16 +1,17 @@
-import PropTypes from "prop-types";
-import styles from "./main.module.css";
+import PropTypes from 'prop-types'
+
+import styles from './block.module.css'
 
 export default function Block({ content }) {
-  return (
-    <div className={styles.block}>
-      {content.map((c) => {
-        return c;
-      })}
-    </div>
-  );
+    return (
+        <div className={styles.block}>
+            { content.map((c) => {
+                return c
+            }) }
+        </div>
+    )
 }
 
 Block.propTypes = {
-  content: PropTypes.array.isRequired,
-};
+    content: PropTypes.any.isRequired
+}

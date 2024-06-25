@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import Loading from "../components/loading.jsx";
 import Webcam from "react-webcam";
-import { Menu } from "../components/components";
 import model from "../models/gesture_recognizer.task";
 import { MdOutlineCameraswitch } from "react-icons/md";
 import { GestureRecognizer, FilesetResolver } from "@mediapipe/tasks-vision";
@@ -9,6 +8,8 @@ import { FaQuestion, FaFastForward } from "react-icons/fa";
 import styles from "./training.module.css";
 
 import Swiper from "../components/swiper/swiper.jsx";
+
+import Settings from "../components/settings/main";
 
 const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
@@ -140,19 +141,20 @@ export default function Training() {
         <Loading />
       ) : (
         <div className={styles.wrapper}>
-          <Menu />
+          <Settings />
           <Swiper setLoading={setLoading} />
           <Webcam
             ref={cameraRef}
             videoConstraints={{ facingMode: facingMode }}
             className="h-full w-full object-cover object-center"
           />
-          <MdOutlineCameraswitch
-            size={81}
-            color="white"
-            onClick={toggleFacingMode}
-            className={styles.switchButton}
-          />
+          <div className={styles.cam}>
+            <MdOutlineCameraswitch
+              size={81}
+              color="white"
+              onClick={toggleFacingMode}
+            />
+          </div>
           <div className={`${styles.textBox} ${check ? styles.check : ""}`}>
             <div
               className={`${styles.question} ${
@@ -161,8 +163,8 @@ export default function Training() {
             >
               <img src={`/ASL4All/solution/${currentSolution}.png`} />
             </div>
+
             <FaQuestion
-              className="absolute top-0 left-0 m-3 z-50"
               onClick={() => {
                 setShowSolution((prev) => !prev);
               }}
