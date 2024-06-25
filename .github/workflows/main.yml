@@ -26,11 +26,11 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd frontend/asl4all
+          cd frontend
           npm install
           npm install tailwindcss
 
       - name: Build project
         run: |
-          cd frontend/asl4all
+          cd frontend
           npm run build
