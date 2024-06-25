@@ -7,8 +7,7 @@ import { MdOutlineCameraswitch } from "react-icons/md";
 import Webcam from "react-webcam";
 import { FaRegTrashAlt } from "react-icons/fa";
 
-import { Header } from "../components/header/header.jsx";
-//import Swiper from "../components/swiper/swiper.jsx";
+import Swiper from "../components/swiper/swiper.jsx";
 
 import Settings from '../components/settings/main'
 
@@ -113,19 +112,19 @@ const MainComponent = () => {
       ) : (
         <div className={styles.wrapper}>
           <Settings />
-          {/* <Swiper setLoading={setLoading} /> */}
-          <Header />
+          <Swiper setLoading={setLoading} />
           <Webcam
             ref={cameraRef}
             videoConstraints={{ facingMode: facingMode }}
             className="h-full w-full object-cover object-center"
           />
-          <MdOutlineCameraswitch
-            size={81}
-            color="white"
-            onClick={toggleFacingMode}
-            className={styles.switchButton}
-          />
+          <div className={styles.cam}>
+            <MdOutlineCameraswitch
+              size={81}
+              color="white"
+              onClick={toggleFacingMode}
+            />
+          </div>
           <div className={styles.text_box}>
             <FaRegTrashAlt
               className="absolute top-0 left-0 m-3 "

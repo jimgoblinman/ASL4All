@@ -3,7 +3,7 @@
 }
 
 .toggle {
-    z-index: 100;
+    z-index: 999;
     position: fixed;
     left: 2rem;
     top: 2rem;
@@ -58,7 +58,6 @@
 }
 
 .settings {
-    z-index: 50;
     position: absolute;
     top: 0;
     left: 0;
@@ -74,6 +73,7 @@
 }
 
 .settings > div {
+    z-index: 900;
     position: absolute;
     top: 0;
     left: 0;
@@ -86,6 +86,7 @@
 }
 
 .openS {
+    z-index: 800;
     background-color: rgba(0, 0, 0, 1);
 }
 

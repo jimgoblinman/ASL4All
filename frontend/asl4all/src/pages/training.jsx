@@ -9,6 +9,8 @@ import styles from "./training.module.css";
 
 import Swiper from "../components/swiper/swiper.jsx";
 
+import Settings from '../components/settings/main'
+
 const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 function getRandomCharacter() {
@@ -133,18 +135,20 @@ export default function Training() {
         <Loading />
       ) : (
         <div className={styles.wrapper}>
+          <Settings />
           <Swiper setLoading={setLoading} />
           <Webcam
             ref={cameraRef}
             videoConstraints={{ facingMode: facingMode }}
             className="h-full w-full object-cover object-center"
           />
-          <MdOutlineCameraswitch
-            size={81}
-            color="white"
-            onClick={toggleFacingMode}
-            className={styles.switchButton}
-          />
+          <div className={styles.cam}>
+            <MdOutlineCameraswitch
+              size={81}
+              color="white"
+              onClick={toggleFacingMode}
+            />
+          </div>
           <div className={`${styles.textBox} ${check ? styles.check : ""}`}>
             <div
               className={`${styles.question} ${
@@ -154,7 +158,6 @@ export default function Training() {
               <image src={`/ASL4All/solution/${currentSolution}.png`} />
             </div>
             <FaQuestion
-              className="absolute top-0 left-0 m-3"
               onClick={() => {
                 setShowSolution((prev) => !prev);
               }}
